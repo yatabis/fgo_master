@@ -34,8 +34,9 @@ $name-text-ratio: 0.7;
     }
 
     .content-main-name {
+      display: block;
       height: $content-height * $main-name-ratio;
-      padding-top: $sub-name-ratio;
+      margin-top: $sub-name-ratio;
       font-size: $content-height * $main-name-ratio * $name-text-ratio;
       background-color: #ff8;
       text-align: center;

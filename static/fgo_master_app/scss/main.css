@@ -1,3 +1,38 @@
-@media (max-width: 750px){header{height:15vh;background-color:#f88;font-size:7.5vh;text-align:center}main{height:80vh;background-color:#8f8}main .content-wrapper{height:10vh;padding:1vh 2vh;text-align:center}main .content-icon{width:10vh;height:10vh;background-color:#888;float:left}main .content-main-name{height:8vh;padding-top:.2;font-size:5.6vh;background-color:#ff8;text-align:center}main .content-sub-name{height:2vh;font-size:1.4vh;background-color:#00f;color:#fff;text-align:center}footer{height:5vh;background-color:#88f}}
+@media (max-width: 750px) {
+  header {
+    height: 15vh;
+    background-color: #f88;
+    font-size: 7.5vh;
+    text-align: center; }
+
+  main {
+    height: 80vh;
+    background-color: #8f8; }
+    main .content-wrapper {
+      height: 10vh;
+      padding: 1vh 2vh;
+      text-align: center; }
+    main .content-icon {
+      width: 10vh;
+      height: 10vh;
+      background-color: #888;
+      float: left; }
+    main .content-main-name {
+      display: block;
+      height: 8vh;
+      margin-top: 0.2;
+      font-size: 5.6vh;
+      background-color: #ff8;
+      text-align: center; }
+    main .content-sub-name {
+      height: 2vh;
+      font-size: 1.4vh;
+      background-color: #00f;
+      color: #fff;
+      text-align: center; }
+
+  footer {
+    height: 5vh;
+    background-color: #88f; } }
 
 /*# sourceMappingURL=main.css.map */

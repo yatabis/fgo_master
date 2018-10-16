@@ -138,7 +138,7 @@ SASS_TEMPLATE_EXTS = ['.html', '.haml']
 
 # Heroku
 try:
-    from . import local_settings
+    from .local_settings import *
 except ImportError:
     pass
 
