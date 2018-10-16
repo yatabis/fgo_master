@@ -2,5 +2,10 @@
 {% block title %}サーヴァント一覧{% endblock %}
 
 {% block main %}
-  サーヴァント一覧のページ
+  <h2>サーヴァント一覧</h2>
+  <ul>
+    {% for servant in object_list %}
+      <li>{{ servant.name }}</li>
+    {% endfor %}
+  </ul>
 {% endblock %}

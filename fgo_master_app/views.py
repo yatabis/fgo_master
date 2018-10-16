@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+
+from .models import Servant
 
 # Create your views here.
 
@@ -23,7 +25,8 @@ class BattleSimulatorView(TemplateView):
 
 
 # CardData階層
-class ServantView(TemplateView):
+class ServantView(ListView):
+    model = Servant
     template_name = "fgo_master_app/servant.html"
 
 
