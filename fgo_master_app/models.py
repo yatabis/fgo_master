@@ -96,52 +96,60 @@ class Servant(models.Model):
     )
 
     # コマンドカード配分のセット
-    QUICK3 = "QQQAB"
-    ARTS3 = "QAAAB"
-    BUSTRE3 = "QABBB"
-    QUICK1 = "QAABB"
-    ARTS1 = "QQABB"
-    BUSTER1 = "QQAAB"
+    QUICK3 = "quick3"
+    ARTS3 = "arts3"
+    BUSTER3 = "buster3"
+    QUICK1 = "quick1"
+    ARTS1 = "arts1"
+    BUSTER1 = "buster1"
+    CC_DISTRIBUTION = (
+        (QUICK3, "QQQAB"),
+        (ARTS3, "QAAAB"),
+        (BUSTER3, "QABBB"),
+        (QUICK1, "QAABB"),
+        (ARTS1, "QQABB"),
+        (BUSTER1, "QQAAB"),
+    )
 
     # コマンドカード
-    command_cards_distribution = models.CharField(max_length=8)
-    quick_hits = models.IntegerField()
-    arts_hits = models.IntegerField()
-    buster_hits = models.IntegerField()
-    extra_hits = models.IntegerField()
+    command_cards_distribution = models.CharField(max_length=8, default=QUICK1)
+    quick_hits = models.IntegerField(default=1)
+    arts_hits = models.IntegerField(default=1)
+    buster_hits = models.IntegerField(default=1)
+    extra_hits = models.IntegerField(default=1)
     # 宝具
     noble_phantasm = models.OneToOneField('NoblePhantasm', on_delete=models.CASCADE)
     # 保有スキル
-    active_skill = models.ManyToManyField('ActiveSkill', on_delete=models.CASCADE)
+    active_skill = models.ManyToManyField('ActiveSkill')
     # クラススキル
-    passive_skill = models.ManyToManyField('PassiveSkill', on_delete=models.CASCADE)
+    passive_skill = models.ManyToManyField('PassiveSkill')
     # 基礎ステータス
-    base_HP = models.IntegerField()
-    max_HP = models.IntegerField()
-    palingenesis_HP = models.IntegerField()
-    base_ATK = models.IntegerField()
-    max_ATK = models.IntegerField()
-    palingenesis_ATK = models.IntegerField()
+    base_HP = models.IntegerField(default=0)
+    max_HP = models.IntegerField(default=0)
+    palingenesis_HP = models.IntegerField(default=0)
+    base_ATK = models.IntegerField(default=0)
+    max_ATK = models.IntegerField(default=0)
+    palingenesis_ATK = models.IntegerField(default=0)
     # 強化
     synthesis = models.OneToOneField('Synthesis', on_delete=models.CASCADE)
     # 相性
-    attribute = models.CharField(choices=SYNASTRY_SET, max_length=8)
+    attribute = models.CharField(choices=SYNASTRY_SET, max_length=8, default=MAN)
     # 方針
-    alignment1 = models.CharField(choices=POLICY_SET, max_length=8)
+    alignment1 = models.CharField(choices=POLICY_SET, max_length=8, default=LAWFUL)
     # 性格
-    alignment2 = models.CharField(choices=CHARACTER_SET, max_length=8)
+    alignment2 = models.CharField(choices=CHARACTER_SET, max_length=8, default=GOOD)
     # 性別
-    sex = models.CharField(choices=SEX_SET, max_length=8)
+    sex = models.CharField(choices=SEX_SET, max_length=8, default=MALE)
     # スター発生率
-    star_getting_rate = models.IntegerField()
+    star_getting_rate = models.IntegerField(default=0)
     # スター集中率
-    star_focusing_rate = models.IntegerField()
+    star_focusing_rate = models.IntegerField(default=0)
     # 即死率
-    death_rate = models.IntegerField()
+    death_rate = models.IntegerField(default=0)
     # 攻撃時のNP上昇基礎値
-    NP_with_attack = models.IntegerField()
+    NP_with_attack = models.IntegerField(default=0)
     # 被ダメ時のNP上昇基礎値
-    NP_with_damage = models.IntegerField()
+    NP_with_damage = models.IntegerField(default=0)
 
     def __repr__(self):
         return self.name
