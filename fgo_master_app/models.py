@@ -118,7 +118,7 @@ class Servant(models.Model):
     buster_hits = models.IntegerField(default=1)
     extra_hits = models.IntegerField(default=1)
     # 宝具
-    noble_phantasm = models.OneToOneField('NoblePhantasm', on_delete=models.CASCADE)
+    noble_phantasm = models.OneToOneField('NoblePhantasm', on_delete=models.CASCADE, null=True)
     # 保有スキル
     active_skill = models.ManyToManyField('ActiveSkill')
     # クラススキル
@@ -131,7 +131,7 @@ class Servant(models.Model):
     max_ATK = models.IntegerField(default=0)
     palingenesis_ATK = models.IntegerField(default=0)
     # 強化
-    synthesis = models.OneToOneField('Synthesis', on_delete=models.CASCADE)
+    synthesis = models.OneToOneField('Synthesis', on_delete=models.CASCADE, null=True)
     # 相性
     attribute = models.CharField(choices=SYNASTRY_SET, max_length=8, default=MAN)
     # 方針
