@@ -112,9 +112,9 @@ class Servant(models.Model):
     # 宝具
     noble_phantasm = models.OneToOneField('NoblePhantasm', on_delete=models.CASCADE)
     # 保有スキル
-    active_skill = models.ManyToManyField('ActiveSkill', on_delete=models.CASCADE)
+    active_skill = models.ManyToManyField('ActiveSkill')
     # クラススキル
-    passive_skill = models.ManyToManyField('PassiveSkill', on_delete=models.CASCADE)
+    passive_skill = models.ManyToManyField('PassiveSkill')
     # 基礎ステータス
     base_HP = models.IntegerField()
     max_HP = models.IntegerField()

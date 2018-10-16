@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f513bb95-f46f-4c60-96cf-c76353572871" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/fgo_master_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fgo_master_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fgo_master_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/fgo_master_project/settings.py" afterDir="false" />
-    </list>
+    <list default="true" id="f513bb95-f46f-4c60-96cf-c76353572871" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,8 +81,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fgo_master_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="171" column="22" selection-start-line="171" selection-start-column="22" selection-end-line="171" selection-end-column="22" />
+            <state relative-caret-position="809">
+              <caret line="172" lean-forward="true" selection-start-line="172" selection-end-line="172" />
               <folding>
                 <marker date="1539697511968" expanded="true" signature="4623:4625" ph="..." />
                 <marker date="1539697511968" expanded="true" signature="4623:5342" ph="..." />
@@ -537,8 +534,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fgo_master_app/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="171" column="22" selection-start-line="171" selection-start-column="22" selection-end-line="171" selection-end-column="22" />
+        <state relative-caret-position="809">
+          <caret line="172" lean-forward="true" selection-start-line="172" selection-end-line="172" />
           <folding>
             <marker date="1539697511968" expanded="true" signature="4623:4625" ph="..." />
             <marker date="1539697511968" expanded="true" signature="4623:5342" ph="..." />
