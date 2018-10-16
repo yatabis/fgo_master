@@ -77,12 +77,8 @@ WSGI_APPLICATION = 'fgo_master_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd6nilapffi42dv',
-        'USER': 'zlwrldgkfdczia',
-        'PASSWORD': '831965e6bd88369f3450c5cc0db7d1fa026834f84b88762c14efccc31e0adbc3',
-        'HOST': 'ec2-54-221-225-11.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -147,5 +143,7 @@ except ImportError:
     pass
 
 if not DEBUG:
-    import django_heroku
+    import django_heroku, dj_database_url
     django_heroku.settings(locals())
+    db_from_env = dj_database_url.config(conn_max_age=400)
+    DATABASES['default'].update(db_from_env)
