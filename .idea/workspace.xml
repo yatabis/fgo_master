@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f513bb95-f46f-4c60-96cf-c76353572871" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/fgo_master_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fgo_master_app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fgo_master_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/fgo_master_project/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,10 +28,10 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Procfile" value="56" />
-          <entry key="dummy" value="2" />
+          <entry key="dummy" value="18" />
           <entry key="gitignore" value="18" />
           <entry key="html" value="626" />
-          <entry key="py" value="1410" />
+          <entry key="py" value="2003" />
           <entry key="py@fgo_master_project" value="99" />
           <entry key="scss" value="375" />
           <entry key="txt" value="22" />
@@ -41,8 +41,8 @@
         <counts>
           <entry key="CommandLine" value="19" />
           <entry key="HTML" value="626" />
-          <entry key="PLAIN_TEXT" value="178" />
-          <entry key="Python" value="1410" />
+          <entry key="PLAIN_TEXT" value="194" />
+          <entry key="Python" value="2003" />
           <entry key="SCSS" value="375" />
         </counts>
       </usages-collector>
@@ -52,7 +52,7 @@
           <entry key="css" value="4" />
           <entry key="gitignore" value="2" />
           <entry key="html" value="15" />
-          <entry key="py" value="9" />
+          <entry key="py" value="10" />
           <entry key="scss" value="3" />
           <entry key="txt" value="3" />
         </counts>
@@ -62,7 +62,7 @@
           <entry key="CSS" value="4" />
           <entry key="HTML" value="15" />
           <entry key="PLAIN_TEXT" value="6" />
-          <entry key="Python" value="9" />
+          <entry key="Python" value="10" />
           <entry key="SCSS" value="3" />
         </counts>
       </usages-collector>
@@ -72,20 +72,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fgo_master_project/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="149" column="64" selection-start-line="149" selection-start-column="64" selection-end-line="149" selection-end-column="64" />
+            <state relative-caret-position="2235">
+              <caret line="149" lean-forward="true" selection-start-line="149" selection-end-line="149" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fgo_master_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
+            <state relative-caret-position="342">
+              <caret line="171" column="22" selection-start-line="171" selection-start-column="22" selection-end-line="171" selection-end-column="22" />
+              <folding>
+                <marker date="1539697511968" expanded="true" signature="4623:4625" ph="..." />
+                <marker date="1539697511968" expanded="true" signature="4623:5342" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -149,7 +153,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/fgo_master_project/urls.py" />
-        <option value="$PROJECT_DIR$/fgo_master_app/models.py" />
         <option value="$PROJECT_DIR$/templates/fgo_master_app/base.html" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/runtime.txt" />
@@ -168,7 +171,9 @@
         <option value="$PROJECT_DIR$/templates/fgo_master_app/servant.html" />
         <option value="$PROJECT_DIR$/static/fgo_master_app/scss/main.scss" />
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/fgo_master_project/wsgi.py" />
         <option value="$PROJECT_DIR$/fgo_master_project/settings.py" />
+        <option value="$PROJECT_DIR$/fgo_master_app/models.py" />
       </list>
     </option>
   </component>
@@ -326,14 +331,14 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="manage.py@fgo_master_project" weight="0.32891566" />
       <window_info anchor="bottom" id="Inspection Results" weight="0.32891566" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4985694" weight="0.32891566" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4985694" visible="true" weight="0.32891566" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -342,7 +347,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50143063" side_tool="true" weight="0.32891566" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32891566" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -506,13 +511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fgo_master_app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -520,10 +518,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fgo_master_project/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#234#243#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fgo_master_project/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="149" column="64" selection-start-line="149" selection-start-column="64" selection-end-line="149" selection-end-column="64" />
+        <state relative-caret-position="2235">
+          <caret line="149" lean-forward="true" selection-start-line="149" selection-end-line="149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fgo_master_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="171" column="22" selection-start-line="171" selection-start-column="22" selection-end-line="171" selection-end-column="22" />
+          <folding>
+            <marker date="1539697511968" expanded="true" signature="4623:4625" ph="..." />
+            <marker date="1539697511968" expanded="true" signature="4623:5342" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
