@@ -141,15 +141,15 @@ class Servant(models.Model):
     # 性別
     sex = models.CharField(choices=SEX_SET, max_length=8, default=MALE)
     # スター発生率
-    star_getting_rate = models.IntegerField(default=0)
+    star_getting_rate = models.FloatField(default=0)
     # スター集中率
-    star_focusing_rate = models.IntegerField(default=0)
+    star_focusing_rate = models.FloatField(default=0)
     # 即死率
-    death_rate = models.IntegerField(default=0)
+    death_rate = models.FloatField(default=100)
     # 攻撃時のNP上昇基礎値
-    NP_with_attack = models.IntegerField(default=0)
+    NP_with_attack = models.FloatField(default=0)
     # 被ダメ時のNP上昇基礎値
-    NP_with_damage = models.IntegerField(default=0)
+    NP_with_damage = models.FloatField(default=0)
 
     def __repr__(self):
         return self.name
