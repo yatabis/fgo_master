@@ -3,9 +3,17 @@
 
 {% block main %}
   <h2>サーヴァント一覧</h2>
-  <ul>
-    {% for servant in object_list %}
-      <li>{{ servant.name }}</li>
-    {% endfor %}
-  </ul>
+  {% for servant in servants_list %}
+    <div class="content-wrapper">
+      <div class="content-icon">
+        icon
+      </div>
+      <div class="content-main-name servant_list">
+        {{ servant.name }}
+      </div>
+      <div class="content-sub-name">
+        {{ servant.class_name }}
+      </div>
+    </div>
+  {% endfor %}
 {% endblock %}

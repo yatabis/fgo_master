@@ -27,7 +27,9 @@ class BattleSimulatorView(TemplateView):
 # CardData階層
 class ServantView(ListView):
     model = Servant
+    context_object_name = "servants_list"
     template_name = "fgo_master_app/servant.html"
+    paginate_by = 5
 
 
 class CraftEssenceView(TemplateView):

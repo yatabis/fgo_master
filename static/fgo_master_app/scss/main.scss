@@ -40,6 +40,10 @@ $name-text-ratio: 0.7;
       font-size: $content-height * $main-name-ratio * $name-text-ratio;
       background-color: #ff8;
       text-align: center;
+
+      .servant_list {
+        font-size: $content-height * $main-name-ratio * $name-text-ratio / 2;
+      }
     }
 
     .content-sub-name {
