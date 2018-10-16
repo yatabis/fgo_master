@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f513bb95-f46f-4c60-96cf-c76353572871" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/SHIN.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/SHIN.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fgo_master_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/fgo_master_app/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fgo_master_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fgo_master_app/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fgo_master_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/fgo_master_project/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fgo_master_app/scss/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/fgo_master_app/scss/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fgo_master_app/scss/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/fgo_master_app/scss/main.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fgo_master_app/scss/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/static/fgo_master_app/scss/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fgo_master_app/top-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fgo_master_app/top-menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fgo_master_app/battle-simulation.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fgo_master_app/battle-simulation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fgo_master_app/card-data.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fgo_master_app/card-data.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fgo_master_app/synthesis-scheme.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fgo_master_app/synthesis-scheme.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +33,8 @@
           <entry key="Procfile" value="56" />
           <entry key="dummy" value="2" />
           <entry key="gitignore" value="18" />
-          <entry key="html" value="310" />
-          <entry key="py" value="739" />
+          <entry key="html" value="437" />
+          <entry key="py" value="953" />
           <entry key="py@fgo_master_project" value="18" />
           <entry key="scss" value="345" />
           <entry key="txt" value="21" />
@@ -47,9 +43,9 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CommandLine" value="18" />
-          <entry key="HTML" value="310" />
+          <entry key="HTML" value="437" />
           <entry key="PLAIN_TEXT" value="97" />
-          <entry key="Python" value="739" />
+          <entry key="Python" value="953" />
           <entry key="SCSS" value="345" />
         </counts>
       </usages-collector>
@@ -58,7 +54,7 @@
           <entry key="Procfile" value="1" />
           <entry key="css" value="3" />
           <entry key="gitignore" value="2" />
-          <entry key="html" value="5" />
+          <entry key="html" value="13" />
           <entry key="py" value="7" />
           <entry key="scss" value="2" />
           <entry key="txt" value="2" />
@@ -67,7 +63,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="3" />
-          <entry key="HTML" value="5" />
+          <entry key="HTML" value="13" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="Python" value="7" />
           <entry key="SCSS" value="2" />
@@ -89,15 +85,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fgo_master_project/local_settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fgo_master_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="765">
@@ -110,10 +97,10 @@
         <entry file="file://$PROJECT_DIR$/fgo_master_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+              <caret line="30" column="39" lean-forward="true" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1539671491473" expanded="true" signature="427:488" ph="..." />
+                <marker date="1539672479146" expanded="true" signature="833:888" ph="..." />
               </folding>
             </state>
           </provider>
@@ -122,8 +109,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fgo_master_app/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="82" selection-start-line="9" selection-start-column="82" selection-end-line="9" selection-end-column="82" />
+            <state relative-caret-position="180">
+              <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -132,10 +119,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/base.html">
+        <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/card-data.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+            <state relative-caret-position="630">
+              <caret line="42" column="10" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -143,8 +130,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/top-menu.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="64" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
+            <state relative-caret-position="75">
+              <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -183,11 +170,15 @@
         <option value="$PROJECT_DIR$/fgo_master_project/settings.py" />
         <option value="$PROJECT_DIR$/static/fgo_master_app/scss/main.scss" />
         <option value="$PROJECT_DIR$/templates/fgo_master_app/top-menu.html" />
-        <option value="$PROJECT_DIR$/fgo_master_app/views.py" />
-        <option value="$PROJECT_DIR$/fgo_master_app/urls.py" />
-        <option value="$PROJECT_DIR$/templates/fgo_master_app/card-data.html" />
         <option value="$PROJECT_DIR$/templates/fgo_master_app/synthesis-scheme.html" />
         <option value="$PROJECT_DIR$/templates/fgo_master_app/battle-simulation.html" />
+        <option value="$PROJECT_DIR$/templates/fgo_master_app/card-data.html" />
+        <option value="$PROJECT_DIR$/fgo_master_app/urls.py" />
+        <option value="$PROJECT_DIR$/templates/fgo_master_app/servant.html" />
+        <option value="$PROJECT_DIR$/fgo_master_app/views.py" />
+        <option value="$PROJECT_DIR$/templates/fgo_master_app/mystic-code.html" />
+        <option value="$PROJECT_DIR$/templates/fgo_master_app/command-code.html" />
+        <option value="$PROJECT_DIR$/templates/fgo_master_app/craft-essence.html" />
       </list>
     </option>
   </component>
@@ -345,14 +336,14 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="manage.py@fgo_master_project" weight="0.32891566" />
       <window_info anchor="bottom" id="Inspection Results" weight="0.32891566" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4985694" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4985694" weight="0.32891566" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -361,7 +352,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50143063" side_tool="true" weight="0.32891566" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32891566" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32891566" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -390,13 +381,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-180">
           <caret line="162" selection-start-line="162" selection-end-line="162" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -455,51 +439,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/synthesis-scheme.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="40" selection-start-column="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/battle-simulation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="40" selection-start-column="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/top-menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/card-data.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="10" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fgo_master_app/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="82" selection-start-line="9" selection-start-column="82" selection-end-line="9" selection-end-column="82" />
+        <state relative-caret-position="180">
+          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/top-menu.html">
+    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/servant.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="64" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
+        <state>
+          <caret selection-end-line="5" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/card-data.html">
+    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/mystic-code.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/synthesis-scheme.html">
+    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/command-code.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        <state relative-caret-position="15">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/battle-simulation.html">
+    <entry file="file://$PROJECT_DIR$/templates/fgo_master_app/craft-essence.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        <state relative-caret-position="15">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fgo_master_app/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+          <caret line="30" column="39" lean-forward="true" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <marker date="1539671491473" expanded="true" signature="427:488" ph="..." />
+            <marker date="1539672479146" expanded="true" signature="833:888" ph="..." />
           </folding>
         </state>
       </provider>

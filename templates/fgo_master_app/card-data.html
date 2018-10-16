@@ -1,5 +1,49 @@
+{% extends "fgo_master_app/base.html" %}
 {% block title %}霊基一覧{% endblock %}
 
 {% block main %}
-霊基一覧のページ
+  <div class="content-wrapper">
+    <div class="content-icon">
+      icon
+    </div>
+    <a class="content-main-name" href="{% url 'servant' %}">
+      サーヴァント
+    </a>
+    <div class="content-sub-name">
+      Card Data
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="content-icon">
+      icon
+    </div>
+    <a class="content-main-name" href="{% url 'craft-essence' %}">
+      概念礼装
+    </a>
+    <div class="content-sub-name">
+      Card Data
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="content-icon">
+      icon
+    </div>
+    <a class="content-main-name" href="{% url 'command-code' %}">
+      コマンドコード
+    </a>
+    <div class="content-sub-name">
+      Card Data
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="content-icon">
+      icon
+    </div>
+    <a class="content-main-name" href="{% url 'mystic-code' %}">
+      魔術礼装
+    </a>
+    <div class="content-sub-name">
+      Card Data
+    </div>
+  </div>
 {% endblock %}
