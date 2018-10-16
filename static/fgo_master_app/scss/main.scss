@@ -1,0 +1,57 @@
+$header-height: 15vh;
+$footer-height: 5vh;
+$main-height: 100vh - $header-height - $footer-height;
+$content-height: 10vh;
+$wrapper-padding: 1vh 2vh;
+$main-name-ratio: 0.8;
+$sub-name-ratio: 0.2;
+$name-text-ratio: 0.7;
+
+@media (max-width: 750px) {
+
+  header {
+    height: $header-height;
+    background-color: #f88;
+    font-size: $header-height / 2;
+    text-align: center;
+  }
+
+  main {
+    height: $main-height;
+    background-color: #8f8;
+
+    .content-wrapper {
+      height: $content-height;
+      padding: $wrapper-padding;
+      text-align: center;
+    }
+
+    .content-icon {
+      width: $content-height;
+      height: $content-height;
+      background-color: #888;
+      float: left;
+    }
+
+    .content-main-name {
+      height: $content-height * $main-name-ratio;
+      padding-top: $sub-name-ratio;
+      font-size: $content-height * $main-name-ratio * $name-text-ratio;
+      background-color: #ff8;
+      text-align: center;
+    }
+
+    .content-sub-name {
+      height: $content-height * $sub-name-ratio;
+      font-size: $content-height * $sub-name-ratio * $name-text-ratio;
+      background-color: #00f;
+      color: #fff;
+      text-align: center;
+    }
+  }
+
+  footer {
+    height: $footer-height;
+    background-color: #88f;
+  }
+}

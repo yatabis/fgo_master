@@ -1,0 +1,1 @@
+web: gunicorn fgo_master_project.wsgi --log-file -
