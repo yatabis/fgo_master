@@ -11,3 +11,4 @@ pep8==1.7.1
 psycopg2==2.7.5
 pyflakes==1.6.0
 pytz==2017.3
+whitenoise==4.1
