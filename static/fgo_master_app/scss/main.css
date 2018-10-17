@@ -10,7 +10,7 @@
       height: 100%; }
 
   main {
-    height: 80vh;
+    min-height: 80vh;
     background-color: #8f8; }
     main .content-wrapper {
       height: 10vh;

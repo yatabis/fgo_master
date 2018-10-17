@@ -23,7 +23,7 @@ $name-text-ratio: 0.7;
   }
 
   main {
-    height: $main-height;
+    min-height: $main-height;
     background-color: #8f8;
 
     .content-wrapper {
