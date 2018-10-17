@@ -1,0 +1,11 @@
+{% extends "fgo_master_app/base.html" %}
+{% block title %}サーヴァント一覧{% endblock %}
+
+{% block main %}
+  <h2>No. {{ servant.No }}　{{ servant.name }}</h2>
+  <p>クラス　{{ servant.get_class_name_display }}</p>
+  <p>レアリティ　{{ servant.rarity }}</p>
+  <p>コスト　{{ servant.cost }}</p>
+  <p>性別　{{ servant.get_sex_display }}</p>
+  <p>宝具　{{ servant.noble_phantasm }}</p>
+{% endblock %}

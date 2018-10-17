@@ -189,7 +189,7 @@ class ActiveSkill(models.Model):
     # 名前
     name = models.CharField(max_length=64)
     # ランク
-    rank = models.CharField(max_length=4)
+    rank = models.CharField(max_length=4, null=True)
     # チャージタイム
     charge_time = models.IntegerField()
 
