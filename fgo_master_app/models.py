@@ -160,16 +160,38 @@ class Servant(models.Model):
 
 class NoblePhantasm(models.Model):
 
+    # カードのセット
+    QUICK = "Quick"
+    ARTS = "Arts"
+    BUSTER = "Buster"
+    CARD_SET = (
+        (QUICK, QUICK),
+        (ARTS, ARTS),
+        (BUSTER, BUSTER)
+    )
+
+    # 種類のセット
+    WHOLE = "whole"
+    SINGLE = "single"
+    SUPPORT = "support"
+    TYPE_SET = (
+        (WHOLE, "全体"),
+        (SINGLE, "単体"),
+        (SUPPORT, "補助")
+    )
+
+    # カード
+    card = models.CharField(choices=CARD_SET, max_length=8, default=BUSTER)
     # 種類
-    card = models.CharField(max_length=8)
+    type = models.CharField(choices=TYPE_SET, max_length=4, default=WHOLE)
     # 名称
     name = models.CharField(max_length=128)
     # 読み
     yomi = models.CharField(max_length=128)
     # ランク
-    rank = models.CharField(max_length=2)
+    rank = models.CharField(max_length=4)
     # 種別
-    type = models.CharField(max_length=8)
+    anti = models.CharField(max_length=8)
     # ヒット数
     hits = models.IntegerField()
     # 倍率
@@ -205,7 +227,7 @@ class PassiveSkill(models.Model):
     # ID
     skill_id = models.AutoField(primary_key=True)
     # 名前
-    name = models.IntegerField()
+    name = models.CharField()
     # ランク
     rank = models.CharField(max_length=4)
 
