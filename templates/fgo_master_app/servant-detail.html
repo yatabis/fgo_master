@@ -3,16 +3,28 @@
 
 {% block main %}
   <h2>No. {{ servant.No }}　{{ servant.name }}</h2>
-<<<<<<< HEAD
+
+  <h3>基本ステータス</h3>
   <p>クラス　{{ servant.get_class_name_display }}</p>
   <p>レアリティ　{{ servant.rarity }}</p>
   <p>コスト　{{ servant.cost }}</p>
-  <p>性別　{{ servant.get_sex_display }}</p>
-=======
-  <p>クラス　{{ servant.class_name }}</p>
-  <p>レアリティ　{{ servant.rarity }}</p>
-  <p>コスト　{{ servant.cost }}</p>
-  <p>性別　{{ servant.sex }}</p>
->>>>>>> a5209367bc0d2c103674f7ad1091c2702f3fedc9
   <p>宝具　{{ servant.noble_phantasm }}</p>
+
+  <h3>詳細</h3>
+  <p>コマンドカード　{{ servant.get_command_cards_distribution_display }}</p>
+  <p>属性　{{ servant.get_alignment1_display }}・{{ servant.get_alignment2_display }}</p>
+  <p>隠し属性　{{ servant.get_attribute_display }}</p>
+  <p>性別　{{ servant.get_sex_display }}</p>
+  <p>基礎ステータス</p>
+  <p>HP　{{ servant.base_HP }} {{ servant.max_HP }} {{ servant.palingenesis_HP }}</p>
+  <p>ATK　{{ servant.base_ATK }} {{ servant.max_ATK }} {{ servant.palingenesis_ATK }}</p>
+  <p>スター発生率　{{ servant.star_getting_rate }}</p>
+  <p>スター集中率　{{ servant.star_focusing_rate }}</p>
+  <p>即死率　{{ servant.death_rate }}</p>
+  <p>NP上昇基礎値（攻撃時／被ダメ時）　{{ servant.NP_with_attack }} / {{ servant.NP_with_damage }}</p>
+
+  <h3>スキル</h3>
+  <p>保有スキル　{{ servant.active_skill }}</p>
+  <p>クラススキル　{{ servant.passive_skill }}</p>
+
 {% endblock %}

@@ -112,7 +112,7 @@ class Servant(models.Model):
     )
 
     # コマンドカード
-    command_cards_distribution = models.CharField(max_length=8, default=QUICK1)
+    command_cards_distribution = models.CharField(max_length=8, choices=CC_DISTRIBUTION, default=QUICK1)
     quick_hits = models.IntegerField(default=1)
     arts_hits = models.IntegerField(default=1)
     buster_hits = models.IntegerField(default=1)
