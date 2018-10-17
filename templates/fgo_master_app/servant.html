@@ -8,9 +8,9 @@
       <div class="content-icon">
         icon
       </div>
-      <div class="content-main-name servant_list">
+      <a class="content-main-name servant_list" href="{% url "servant-detail" servant.name %}">
         {{ servant.name }}
-      </div>
+      </a>
       <div class="content-sub-name">
         {{ servant.class_name }}
       </div>

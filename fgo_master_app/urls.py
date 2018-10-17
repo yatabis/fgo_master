@@ -3,6 +3,7 @@ from django.urls import path
 from .views import TopMenuView
 from .views import CardDataView, SynthesisSchemeView, BattleSimulatorView
 from .views import ServantView, CraftEssenceView, CommandCodeView, MysticCodeView
+from .views import ServantDetailView
 
 urlpatterns = [
     path('top-menu/', TopMenuView.as_view(), name="top-menu"),
@@ -15,4 +16,6 @@ urlpatterns = [
     path('craft-essence/', CraftEssenceView.as_view(), name="craft-essence"),
     path('command-code/', CommandCodeView.as_view(), name="command-code"),
     path('mystic-code/', MysticCodeView.as_view(), name="mystic-code"),
+
+    path('servant/<str:name>', ServantDetailView.as_view(), name="servant-detail")
 ]
