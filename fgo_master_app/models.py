@@ -191,7 +191,7 @@ class NoblePhantasm(models.Model):
     # ランク
     rank = models.CharField(max_length=4)
     # 種別
-    anti = models.CharField(max_length=8)
+    anti = models.CharField(max_length=8, null=True)
     # ヒット数
     hits = models.IntegerField()
     # 倍率
@@ -227,7 +227,7 @@ class PassiveSkill(models.Model):
     # ID
     skill_id = models.AutoField(primary_key=True)
     # 名前
-    name = models.CharField()
+    name = models.CharField(max_length=64)
     # ランク
     rank = models.CharField(max_length=4)
 
@@ -263,3 +263,25 @@ class Synthesis(models.Model):
     skill_up7 = models.IntegerField(default=0)
     skill_up8 = models.IntegerField(default=0)
     skill_up9 = models.IntegerField(default=0)
+
+
+class CraftEssence(models.Model):
+
+    # 名前
+    name = models.CharField(max_length=64)
+    # レアリティ
+    rarity = models.IntegerField()
+
+
+class CommandCode(models.Model):
+
+    # 名前
+    name = models.CharField(max_length=64)
+    # レアリティ
+    rarity = models.IntegerField()
+
+
+class MysticCode(models.Model):
+
+    # 名前
+    name = models.CharField(max_length=64)
