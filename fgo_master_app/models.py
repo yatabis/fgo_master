@@ -154,7 +154,8 @@ class Servant(models.Model):
     def __repr__(self):
         return self.name
 
-    __str__ = __repr__
+    def __str__(self):
+        return self.name
 
 
 class NoblePhantasm(models.Model):
@@ -175,9 +176,10 @@ class NoblePhantasm(models.Model):
     value = models.IntegerField()
 
     def __repr__(self):
-        return self.card + self.type
+        return f"{self.name} ({self.yomi})"
 
-    __str__ = __repr__
+    def __str__(self):
+        return f"{self.name} ({self.yomi})"
 
 
 class ActiveSkill(models.Model):
@@ -191,6 +193,12 @@ class ActiveSkill(models.Model):
     # チャージタイム
     charge_time = models.IntegerField()
 
+    def __repr__(self):
+        return f"{self.name} {self.rank}"
+
+    def __str__(self):
+        return f"{self.name} {self.rank}"
+
 
 class PassiveSkill(models.Model):
 
@@ -200,6 +208,12 @@ class PassiveSkill(models.Model):
     name = models.IntegerField()
     # ランク
     rank = models.CharField(max_length=4)
+
+    def __repr__(self):
+        return f"{self.name} {self.rank}"
+
+    def __str__(self):
+        return f"{self.name} {self.rank}"
 
 
 class Synthesis(models.Model):
