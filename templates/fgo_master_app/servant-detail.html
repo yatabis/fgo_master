@@ -3,9 +3,16 @@
 
 {% block main %}
   <h2>No. {{ servant.No }}　{{ servant.name }}</h2>
+<<<<<<< HEAD
   <p>クラス　{{ servant.get_class_name_display }}</p>
   <p>レアリティ　{{ servant.rarity }}</p>
   <p>コスト　{{ servant.cost }}</p>
   <p>性別　{{ servant.get_sex_display }}</p>
+=======
+  <p>クラス　{{ servant.class_name }}</p>
+  <p>レアリティ　{{ servant.rarity }}</p>
+  <p>コスト　{{ servant.cost }}</p>
+  <p>性別　{{ servant.sex }}</p>
+>>>>>>> a5209367bc0d2c103674f7ad1091c2702f3fedc9
   <p>宝具　{{ servant.noble_phantasm }}</p>
 {% endblock %}

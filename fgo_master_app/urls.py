@@ -12,10 +12,19 @@ urlpatterns = [
     path('synthesis-scheme/', SynthesisSchemeView.as_view(), name="synthesis-scheme"),
     path('battle-simulator', BattleSimulatorView.as_view(), name="battle-simulator"),
 
+<<<<<<< HEAD
     path('card-data/servant/', ServantView.as_view(), name="servant"),
     path('card-data/craft-essence/', CraftEssenceView.as_view(), name="craft-essence"),
     path('card-data/command-code/', CommandCodeView.as_view(), name="command-code"),
     path('card-data/mystic-code/', MysticCodeView.as_view(), name="mystic-code"),
 
     path('card-data/servant/<str:name>/', ServantDetailView.as_view(), name="servant-detail")
+=======
+    path('servant/', ServantView.as_view(), name="servant"),
+    path('craft-essence/', CraftEssenceView.as_view(), name="craft-essence"),
+    path('command-code/', CommandCodeView.as_view(), name="command-code"),
+    path('mystic-code/', MysticCodeView.as_view(), name="mystic-code"),
+
+    path('servant/<str:name>', ServantDetailView.as_view(), name="servant-detail")
+>>>>>>> a5209367bc0d2c103674f7ad1091c2702f3fedc9
 ]
