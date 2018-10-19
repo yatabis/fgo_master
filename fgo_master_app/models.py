@@ -196,6 +196,8 @@ class NoblePhantasm(models.Model):
     hits = models.IntegerField()
     # 倍率
     value = models.IntegerField()
+    # テキスト
+    text = models.TextField(default="テキスト")
 
     def __repr__(self):
         return f"{self.name} ({self.yomi})"
@@ -214,6 +216,8 @@ class ActiveSkill(models.Model):
     rank = models.CharField(max_length=4, null=True)
     # チャージタイム
     charge_time = models.IntegerField()
+    # テキスト
+    text = models.TextField(default="テキスト")
 
     def __repr__(self):
         return f"{self.name} {self.rank}"
@@ -230,6 +234,8 @@ class PassiveSkill(models.Model):
     name = models.CharField(max_length=64)
     # ランク
     rank = models.CharField(max_length=4)
+    # テキスト
+    text = models.TextField(default="テキスト")
 
     def __repr__(self):
         return f"{self.name} {self.rank}"
@@ -271,6 +277,8 @@ class CraftEssence(models.Model):
     name = models.CharField(max_length=64)
     # レアリティ
     rarity = models.IntegerField()
+    # テキスト
+    text = models.TextField(default="テキスト")
 
 
 class CommandCode(models.Model):
