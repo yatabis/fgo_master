@@ -24,7 +24,11 @@ $name-text-ratio: 0.7;
 
   main {
     min-height: $main-height;
-    background-color: #8f8;
+    background-color: #48f;
+
+    .content-title {
+      text-align: right;
+    }
 
     .content-wrapper {
       height: $content-height;
@@ -35,7 +39,7 @@ $name-text-ratio: 0.7;
     .content-icon {
       width: $content-height;
       height: $content-height;
-      background-color: #888;
+      background-color: #ff0;
       float: left;
     }
 
@@ -44,25 +48,38 @@ $name-text-ratio: 0.7;
       height: $content-height * $main-name-ratio;
       margin-top: $sub-name-ratio;
       font-size: $content-height * $main-name-ratio * $name-text-ratio;
-      background-color: #ff8;
+      background-color: #fee;
       text-align: center;
-      }
+    }
 
     .servant_list {
-      font-size: $content-height * $main-name-ratio * $name-text-ratio / 2;
+      font-size: $content-height * $main-name-ratio * $name-text-ratio * 0.7;
     }
 
     .content-sub-name {
       height: $content-height * $sub-name-ratio;
       font-size: $content-height * $sub-name-ratio * $name-text-ratio;
-      background-color: #00f;
+      background-color: #00c;
       color: #fff;
       text-align: center;
+    }
+
+    .detail-wrapper {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .rarity-and-cost, .statuses {
+      display: flex;
+    }
+
+    .skill {
+      display: flex;
     }
   }
 
   footer {
     height: $footer-height;
-    background-color: #88f;
+    background-color: #333;
   }
 }

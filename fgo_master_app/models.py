@@ -183,7 +183,7 @@ class NoblePhantasm(models.Model):
     # カード
     card = models.CharField(choices=CARD_SET, max_length=8, default=BUSTER)
     # 種類
-    type = models.CharField(choices=TYPE_SET, max_length=4, default=WHOLE)
+    type = models.CharField(choices=TYPE_SET, max_length=8, default=WHOLE)
     # 名称
     name = models.CharField(max_length=128)
     # 読み

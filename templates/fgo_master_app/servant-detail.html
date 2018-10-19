@@ -2,13 +2,57 @@
 {% block title %}サーヴァント一覧{% endblock %}
 
 {% block main %}
-  <h2>No. {{ servant.No }}　{{ servant.name }}</h2>
+  <div class="content-title">
+    <h2 class="content-main-title">No. {{ servant.No }}　{{ servant.name }}</h2>
+    <h4 class="content-sub-title">{{ servant.get_class_name_display }}</h4>
+  </div>
 
-  <h3>基本ステータス</h3>
-  <p>クラス　{{ servant.get_class_name_display }}</p>
-  <p>レアリティ　{{ servant.rarity }}</p>
-  <p>コスト　{{ servant.cost }}</p>
-  <p>宝具　{{ servant.noble_phantasm }}</p>
+  <div class="detail-wrapper">
+    <p>ステータス</p>
+    <div class="rarity-and-cost">
+      <p>{% for _ in value|center:servant.rarity %}⭐{% endfor %}</p>
+      <p>cost {{ servant.cost }}</p>
+    </div>
+    <div class="statuses">
+      <p>HP {{ servant.max_HP }}</p>
+      <p>ATK {{ servant.max_ATK }}</p>
+    </div>
+  </div>
+
+  <div class="detail-wrapper">
+    <p>宝具</p>
+    <h4>{{ servant.noble_phantasm.yomi }}</h4>
+    <h3>{{ servant.noble_phantasm.name }}</h3>
+    <p>ランク　{{ servant.noble_phantasm.rank }}</p>
+    <p>種別　　{{ servant.noble_phantasm.anti }}</p>
+  </div>
+
+  <div class="detail-wrapper">
+    <p>保有スキル</p>
+    {% for active_skill in servant.active_skill.all %}
+      <div class="skill">
+        <div class="skill-left">
+          <p>SKILL {{ forloop.counter }}</p>
+          <p>チャージタイム {{ active_skill.charge_time }}</p>
+        </div>
+        <div class="skill-icon">icon</div>
+        <div class="skill-right">
+          <p class="skill-name">{{ active_skill.name }} {{ active_skill.rank }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="detail-wrapper">
+    <p>クラススキル</p>
+    {% for passive_skill in servant.passive_skill.all %}
+      <div class="skill">
+        <p>SKILL {{ forloop.counter }}</p>
+        <div class="skill-icon">icon</div>
+        <p>{{ passive_skill.name }} {{ passive_skill.rank }}</p>
+      </div>
+    {% endfor %}
+  </div>
 
   <h3>詳細</h3>
   <p>コマンドカード　{{ servant.get_command_cards_distribution_display }}</p>
@@ -22,9 +66,5 @@
   <p>スター集中率　{{ servant.star_focusing_rate }}</p>
   <p>即死率　{{ servant.death_rate }}</p>
   <p>NP上昇基礎値（攻撃時／被ダメ時）　{{ servant.NP_with_attack }} / {{ servant.NP_with_damage }}</p>
-
-  <h3>スキル</h3>
-  <p>保有スキル　{{ servant.active_skill }}</p>
-  <p>クラススキル　{{ servant.passive_skill }}</p>
 
 {% endblock %}
