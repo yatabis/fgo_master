@@ -117,8 +117,6 @@ class Servant(models.Model):
     arts_hits = models.IntegerField(default=1)
     buster_hits = models.IntegerField(default=1)
     extra_hits = models.IntegerField(default=1)
-    # 宝具
-    noble_phantasm = models.OneToOneField('NoblePhantasm', on_delete=models.CASCADE, null=True)
     # 保有スキル
     active_skill = models.ManyToManyField('ActiveSkill')
     # クラススキル
@@ -180,6 +178,8 @@ class NoblePhantasm(models.Model):
         (SUPPORT, "補助")
     )
 
+    # サーヴァント
+    servant = models.ForeignKey('Servant', on_delete=models.CASCADE, related_name="noble_phantasm", null=True)
     # カード
     card = models.CharField(choices=CARD_SET, max_length=8, default=BUSTER)
     # 種類
@@ -192,18 +192,41 @@ class NoblePhantasm(models.Model):
     rank = models.CharField(max_length=4)
     # 種別
     anti = models.CharField(max_length=8, null=True)
+    # テキスト
+    text = models.TextField(null=True)
     # ヒット数
     hits = models.IntegerField()
     # 倍率
-    value = models.IntegerField()
-    # テキスト
-    text = models.TextField(default="テキスト")
+    value1 = models.IntegerField(null=True)
+    value2 = models.IntegerField(null=True)
+    value3 = models.IntegerField(null=True)
+    value4 = models.IntegerField(null=True)
+    value5 = models.IntegerField(null=True)
+    # 効果
+    effect = models.ManyToManyField('NoblePhantasmEffect', related_name="noble_phantasm")
 
     def __repr__(self):
         return f"{self.name} ({self.yomi})"
 
     def __str__(self):
         return f"{self.name} ({self.yomi})"
+
+
+class NoblePhantasmEffect(models.Model):
+    # 効果
+    text = models.TextField(default="テキスト")
+    # 数値
+    value1 = models.IntegerField()
+    value2 = models.IntegerField()
+    value3 = models.IntegerField()
+    value4 = models.IntegerField()
+    value5 = models.IntegerField()
+
+    def __repr__(self):
+        return f"self.text ({self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5})"
+
+    def __str__(self):
+        return f"self.text ({self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5})"
 
 
 class ActiveSkill(models.Model):
@@ -212,18 +235,37 @@ class ActiveSkill(models.Model):
     skill_id = models.AutoField(primary_key=True)
     # 名前
     name = models.CharField(max_length=64)
+    # アイコン
+    icon = models.ImageField(null=True)
     # ランク
     rank = models.CharField(max_length=4, null=True)
     # チャージタイム
     charge_time = models.IntegerField()
-    # テキスト
-    text = models.TextField(default="テキスト")
+    # 効果
+    effect = models.ManyToManyField('NoblePhantasmEffect', related_name="active_skill")
 
     def __repr__(self):
         return f"{self.name} {self.rank}"
 
     def __str__(self):
         return f"{self.name} {self.rank}"
+
+
+class ActiveSkillEffect(models.Model):
+    # 効果
+    text = models.TextField(default="テキスト")
+    # 数値
+    value1 = models.IntegerField()
+    value2 = models.IntegerField()
+    value3 = models.IntegerField()
+    value4 = models.IntegerField()
+    value5 = models.IntegerField()
+
+    def __repr__(self):
+        return f"self.text ({self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5})"
+
+    def __str__(self):
+        return f"self.text ({self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5})"
 
 
 class PassiveSkill(models.Model):
@@ -232,16 +274,35 @@ class PassiveSkill(models.Model):
     skill_id = models.AutoField(primary_key=True)
     # 名前
     name = models.CharField(max_length=64)
+    # アイコン
+    icon = models.ImageField(null=True)
     # ランク
     rank = models.CharField(max_length=4)
-    # テキスト
-    text = models.TextField(default="テキスト")
+    # 効果
+    effect = models.ManyToManyField('NoblePhantasmEffect', related_name="passive_skill")
 
     def __repr__(self):
         return f"{self.name} {self.rank}"
 
     def __str__(self):
         return f"{self.name} {self.rank}"
+
+
+class PassiveSkillEffect(models.Model):
+    # 効果
+    text = models.TextField(default="テキスト")
+    # 数値
+    value1 = models.IntegerField()
+    value2 = models.IntegerField()
+    value3 = models.IntegerField()
+    value4 = models.IntegerField()
+    value5 = models.IntegerField()
+
+    def __repr__(self):
+        return f"self.text ({self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5})"
+
+    def __str__(self):
+        return f"self.text ({self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5})"
 
 
 class Synthesis(models.Model):
