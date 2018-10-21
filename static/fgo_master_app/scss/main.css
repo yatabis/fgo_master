@@ -1,4 +1,13 @@
 @media (max-width: 750px) {
+  h2 {
+    font-size: 5vh; }
+
+  h3 {
+    font-size: 3vh; }
+
+  h4 {
+    font-size: 2vh; }
+
   header {
     height: 15vh;
     background-color: #f88;
@@ -12,7 +21,7 @@
   main {
     min-height: 80vh;
     background-size: 30px 30px, 30px 30px, auto;
-    background-image: radial-gradient(#bbb 3%, transparent 5%), radial-gradient(#bbb 3%, transparent 5%), linear-gradient(#ffb, #bdf);
+    background-image: radial-gradient(#bbb 3%, transparent 5%), radial-gradient(#bbb 3%, transparent 5%), linear-gradient(#bdf, #ffb);
     background-position: 0 0, 15px 15px, 0 0; }
     main .content-title {
       text-align: right; }

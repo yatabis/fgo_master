@@ -7,10 +7,22 @@ $main-name-ratio: 0.8;
 $sub-name-ratio: 0.2;
 $name-text-ratio: 0.7;
 
-$background_up: #ffb;
-$background_down: #bdf;
+$background_up: #bdf;
+$background_down: #ffb;
 
 @media (max-width: 750px) {
+
+  h2 {
+    font-size: 5vh;
+  }
+
+  h3 {
+    font-size: 3vh;
+  }
+
+  h4 {
+    font-size: 2vh;
+  }
 
   header {
     height: $header-height;
