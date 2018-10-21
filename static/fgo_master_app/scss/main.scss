@@ -7,6 +7,9 @@ $main-name-ratio: 0.8;
 $sub-name-ratio: 0.2;
 $name-text-ratio: 0.7;
 
+$background_up: #ffb;
+$background_down: #bdf;
+
 @media (max-width: 750px) {
 
   header {
@@ -24,7 +27,11 @@ $name-text-ratio: 0.7;
 
   main {
     min-height: $main-height;
-    background-color: #48f;
+    background-size: 30px 30px, 30px 30px, auto;
+    background-image: radial-gradient(#bbb 3%, transparent 5%),
+    radial-gradient(#bbb 3%, transparent 5%),
+    linear-gradient($background_up, $background_down);
+    background-position: 0 0, 15px 15px, 0 0;
 
     .content-title {
       text-align: right;
@@ -65,21 +72,39 @@ $name-text-ratio: 0.7;
     }
 
     .detail-wrapper {
-      background-color: #333;
+      position: relative;
+      margin: 10px;
+      background-color: #444;
       color: #fff;
+      border-style: solid;
+      border-color: #fff;
+      border-width: 10px 3px 3px;
     }
 
-    .rarity-and-cost, .statuses {
-      display: flex;
+    .detail-caption {
+      position: absolute;
+      top: -10px;
+      background-color: #fff;
+      color: #000;
+      padding: 0 5px;
     }
 
-    .skill {
-      display: flex;
-    }
-  }
+    .block-main {
+      padding-top: 20px;
+      color: #fff;
 
-  footer {
-    height: $footer-height;
-    background-color: #333;
+      .rarity-and-cost, .statuses {
+        display: flex;
+      }
+
+      .skill {
+        display: flex;
+      }
+    }
+
+    footer {
+      height: $footer-height;
+      background-color: #333;
+    }
   }
 }

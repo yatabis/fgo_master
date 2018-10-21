@@ -8,7 +8,7 @@
   </div>
 
   <div class="detail-wrapper">
-    <p>ステータス</p>
+    <span class="detail-caption">ステータス</span>
     <div class="rarity-and-cost">
       <p>{% for _ in value|center:servant.rarity %}⭐{% endfor %}</p>
       <p>cost {{ servant.cost }}</p>
@@ -20,7 +20,7 @@
   </div>
 
   <div class="detail-wrapper">
-    <p>宝具</p>
+    <span class="detail-caption">宝具</span>
     <h4>{{ servant.noble_phantasm.yomi }}</h4>
     <h3>{{ servant.noble_phantasm.name }}</h3>
     <p>ランク　{{ servant.noble_phantasm.rank }}</p>
@@ -28,7 +28,7 @@
   </div>
 
   <div class="detail-wrapper">
-    <p>保有スキル</p>
+    <span class="detail-caption">保有スキル</span>
     {% for active_skill in servant.active_skill.all %}
       <div class="skill">
         <div class="skill-left">
@@ -44,7 +44,7 @@
   </div>
 
   <div class="detail-wrapper">
-    <p>クラススキル</p>
+    <span class="detail-caption">クラススキル</span>
     {% for passive_skill in servant.passive_skill.all %}
       <div class="skill">
         <p>SKILL {{ forloop.counter }}</p>
