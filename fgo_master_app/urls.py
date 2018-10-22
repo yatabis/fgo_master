@@ -1,5 +1,6 @@
 from django.urls import path
 
+
 from .views import TopMenuView
 from .views import CardDataView, SynthesisSchemeView, BattleSimulatorView
 from .views import ServantView, CraftEssenceView, CommandCodeView, MysticCodeView

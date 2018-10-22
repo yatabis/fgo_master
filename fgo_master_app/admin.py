@@ -1,6 +1,12 @@
 from django.contrib import admin
 
-from .models import Servant, NoblePhantasm, ActiveSkill, PassiveSkill, Synthesis
+from .models import Servant
+from .models import NoblePhantasm, NoblePhantasmEffect
+from .models import ActiveSkill, PassiveSkill, ActiveSkillEffect, PassiveSkillEffect
+from .models import Synthesis
+from .models import CraftEssence
+from .models import CommandCode
+from .models import MysticCode
 
 # Register your models here.
 

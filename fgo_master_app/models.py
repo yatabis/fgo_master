@@ -236,7 +236,7 @@ class ActiveSkill(models.Model):
     # 名前
     name = models.CharField(max_length=64)
     # アイコン
-    icon = models.ImageField(null=True)
+    icon = models.ImageField(upload_to='images/', null=True)
     # ランク
     rank = models.CharField(max_length=4, null=True)
     # チャージタイム
@@ -275,7 +275,7 @@ class PassiveSkill(models.Model):
     # 名前
     name = models.CharField(max_length=64)
     # アイコン
-    icon = models.ImageField(null=True)
+    icon = models.ImageField(upload_to='images/', null=True)
     # ランク
     rank = models.CharField(max_length=4)
     # 効果
@@ -338,6 +338,8 @@ class CraftEssence(models.Model):
     name = models.CharField(max_length=64)
     # レアリティ
     rarity = models.IntegerField()
+    # アイコン
+    icon = models.ImageField(upload_to='images/', null=True)
     # テキスト
     text = models.TextField(default="テキスト")
 

@@ -136,6 +136,10 @@ SASS_PRECISION = 8
 SASS_OUTPUT_STYLE = 'compressed'
 SASS_TEMPLATE_EXTS = ['.html', '.haml']
 
+# メディア
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Heroku
 try:
     from .local_settings import *
@@ -143,7 +147,8 @@ except ImportError:
     pass
 
 if not DEBUG:
-    import django_heroku, dj_database_url
+    import django_heroku
+    import dj_database_url
     django_heroku.settings(locals())
     db_from_env = dj_database_url.config(conn_max_age=400)
     DATABASES['default'].update(db_from_env)

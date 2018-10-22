@@ -1,5 +1,5 @@
 @media (max-width: 750px) {
-  font-size: 1vh;
+  min-font-size: 1vh;
   h2 {
     font-size: 5vh; }
 
