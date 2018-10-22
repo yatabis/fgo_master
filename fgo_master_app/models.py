@@ -241,8 +241,6 @@ class NoblePhantasmEffect(models.Model):
 
 class ActiveSkill(models.Model):
 
-    # ID
-    skill_id = models.AutoField(primary_key=True)
     # 名前
     name = models.CharField(max_length=64)
     # アイコン
@@ -252,7 +250,7 @@ class ActiveSkill(models.Model):
     # チャージタイム
     CT = models.IntegerField()
     # 効果
-    effect = models.ManyToManyField('NoblePhantasmEffect', related_name="active_skill")
+    effect = models.ManyToManyField('ActiveSkillEffect', related_name="active_skill")
 
     def __repr__(self):
         return f"{self.name} {self.rank}"
@@ -288,8 +286,6 @@ class ActiveSkillEffect(models.Model):
 
 class PassiveSkill(models.Model):
 
-    # ID
-    skill_id = models.AutoField(primary_key=True)
     # 名前
     name = models.CharField(max_length=64)
     # アイコン
@@ -297,7 +293,7 @@ class PassiveSkill(models.Model):
     # ランク
     rank = models.CharField(max_length=4, blank=True, default="")
     # 効果
-    effect = models.ManyToManyField('NoblePhantasmEffect', related_name="passive_skill")
+    effect = models.ManyToManyField('PassiveSkillEffect', related_name="passive_skill")
 
     def __repr__(self):
         return f"{self.name} {self.rank}"
