@@ -1,57 +1,94 @@
 {% extends "fgo_master_app/base.html" %}
 {% block title %}サーヴァント一覧{% endblock %}
 
+{% block main-title %}No. {{ servant.No }}　{{ servant.name }}{% endblock %}
+{% block sub-title %}{{ servant.get_class_name_display }}{% endblock %}
+
 {% block main %}
-  <div class="content-title">
-    <h2 class="content-main-title">No. {{ servant.No }}　{{ servant.name }}</h2>
-    <h4 class="content-sub-title">{{ servant.get_class_name_display }}</h4>
-  </div>
 
   <div class="detail-wrapper">
     <span class="detail-caption">ステータス</span>
-    <div class="rarity-and-cost">
-      <p>{% for _ in value|center:servant.rarity %}⭐{% endfor %}</p>
-      <p>cost {{ servant.cost }}</p>
-    </div>
-    <div class="statuses">
-      <p>HP {{ servant.max_HP }}</p>
-      <p>ATK {{ servant.max_ATK }}</p>
+    <div class="detail-main">
+      <table width="100%">
+        <tr>
+          <td class="status">{% for _ in value|center:servant.rarity %}⭐{% endfor %}</td>
+          <td class="status">HP {{ servant.max_HP }}</td>
+        </tr>
+        <tr>
+          <td class="status">cost {{ servant.cost }}</td>
+          <td class="status">ATK {{ servant.max_ATK }}</td>
+        </tr>
+      </table>
     </div>
   </div>
 
   <div class="detail-wrapper">
     <span class="detail-caption">宝具</span>
-    <h4>{{ servant.noble_phantasm.yomi }}</h4>
-    <h3>{{ servant.noble_phantasm.name }}</h3>
-    <p>ランク　{{ servant.noble_phantasm.rank }}</p>
-    <p>種別　　{{ servant.noble_phantasm.anti }}</p>
+    <div class="detail-main">
+      <p class="np-yomi">{{ servant.noble_phantasm.yomi }}</p>
+      <p class="np-name">{{ servant.noble_phantasm.name }}</p>
+      <table width="100%">
+        <tr>
+          <td>ランク</td>
+          <td>{{ servant.noble_phantasm.rank }}</td>
+        </tr>
+        <tr>
+          <td>種別</td>
+          <td>{{ servant.noble_phantasm.anti }}</td>
+        </tr>
+      </table>
+      <p>
+        {{ servant.noble_phantasm.text }}
+        {% for effect in servant.noble_phantasm.effect %}
+          +{{ effect.text }}
+        {% endfor %}
+      </p>
+    </div>
   </div>
 
   <div class="detail-wrapper">
     <span class="detail-caption">保有スキル</span>
-    {% for active_skill in servant.active_skill.all %}
-      <div class="skill">
-        <div class="skill-left">
-          <p>SKILL {{ forloop.counter }}</p>
-          <p>チャージタイム {{ active_skill.charge_time }}</p>
-        </div>
-        <div class="skill-icon">icon</div>
-        <div class="skill-right">
-          <p class="skill-name">{{ active_skill.name }} {{ active_skill.rank }}</p>
-        </div>
-      </div>
-    {% endfor %}
+    <div class="detail-main">
+      <table width="100%">
+        {% for skill in servant.active_skill %}
+          <tr>
+            <td>SKILL {{ forloop.counter }}</td>
+            <td rowspan="2">{{ skill.icon }}</td>
+            <td>{{ skill.name }} {{ skill.rank }}</td>
+          </tr>
+          <tr>
+            <td>CT {{ skill.CT }}</td>
+            <td>
+              {% for effect in skill.effect %}
+                {{ effect.text }}
+              {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
   </div>
 
   <div class="detail-wrapper">
     <span class="detail-caption">クラススキル</span>
-    {% for passive_skill in servant.passive_skill.all %}
-      <div class="skill">
-        <p>SKILL {{ forloop.counter }}</p>
-        <div class="skill-icon">icon</div>
-        <p>{{ passive_skill.name }} {{ passive_skill.rank }}</p>
-      </div>
-    {% endfor %}
+    <div class="detail-main">
+      <table width="100%">
+        {% for skill in servant.passive_skill %}
+          <tr>
+            <td rowspan="2">SKILL {{ forloop.counter }}</td>
+            <td rowspan="2">{{ skill.icon }}</td>
+            <td>{{ skill.name }} {{ skill.rank }}</td>
+          </tr>
+          <tr>
+            <td>
+              {% for effect in skill.effect %}
+                {{ effect.text }}
+              {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
   </div>
 
   <h3>詳細</h3>

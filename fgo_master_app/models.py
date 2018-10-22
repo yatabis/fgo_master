@@ -129,7 +129,7 @@ class Servant(models.Model):
     max_ATK = models.IntegerField(default=0)
     palingenesis_ATK = models.IntegerField(default=0)
     # 強化
-    synthesis = models.OneToOneField('Synthesis', on_delete=models.CASCADE, null=True)
+    synthesis = models.OneToOneField('Synthesis', on_delete=models.CASCADE, blank=True, null=True)
     # 相性
     attribute = models.CharField(choices=SYNASTRY_SET, max_length=8, default=MAN)
     # 方針
@@ -179,7 +179,7 @@ class NoblePhantasm(models.Model):
     )
 
     # サーヴァント
-    servant = models.ForeignKey('Servant', on_delete=models.CASCADE, related_name="noble_phantasm", null=True)
+    servant = models.ForeignKey('Servant', on_delete=models.CASCADE, related_name="noble_phantasm", blank=True, null=True)
     # カード
     card = models.CharField(choices=CARD_SET, max_length=8, default=BUSTER)
     # 種類
@@ -191,17 +191,20 @@ class NoblePhantasm(models.Model):
     # ランク
     rank = models.CharField(max_length=4)
     # 種別
-    anti = models.CharField(max_length=8, null=True)
+    anti = models.CharField(max_length=8, blank=True, default="")
     # テキスト
-    text = models.TextField(null=True)
+    text = models.TextField(blank=True, default="")
+    # 持続時間
+    duration = models.IntegerField(blank=True, null=True)
+    duration_type = models.CharField(choices=(("turn", "ターン"), ("times", "回")), max_length=8, blank=True, null=True)
     # ヒット数
-    hits = models.IntegerField()
+    hits = models.IntegerField(blank=True, null=True)
     # 倍率
-    value1 = models.IntegerField(null=True)
-    value2 = models.IntegerField(null=True)
-    value3 = models.IntegerField(null=True)
-    value4 = models.IntegerField(null=True)
-    value5 = models.IntegerField(null=True)
+    value1 = models.FloatField(blank=True, null=True)
+    value2 = models.FloatField(blank=True, null=True)
+    value3 = models.FloatField(blank=True, null=True)
+    value4 = models.FloatField(blank=True, null=True)
+    value5 = models.FloatField(blank=True, null=True)
     # 効果
     effect = models.ManyToManyField('NoblePhantasmEffect', related_name="noble_phantasm")
 
@@ -214,19 +217,26 @@ class NoblePhantasm(models.Model):
 
 class NoblePhantasmEffect(models.Model):
     # 効果
-    text = models.TextField(default="テキスト")
+    text = models.TextField(default="")
+    # 持続時間
+    duration = models.IntegerField(blank=True, null=True)
+    duration_type = models.CharField(choices=(("turn", "ターン"), ("times", "回")), max_length=8, blank=True, null=True)
+    # OC
+    OC = models.BooleanField(default=True)
     # 数値
-    value1 = models.IntegerField()
-    value2 = models.IntegerField()
-    value3 = models.IntegerField()
-    value4 = models.IntegerField()
-    value5 = models.IntegerField()
+    value1 = models.FloatField(blank=True, null=True)
+    value2 = models.FloatField(blank=True, null=True)
+    value3 = models.FloatField(blank=True, null=True)
+    value4 = models.FloatField(blank=True, null=True)
+    value5 = models.FloatField(blank=True, null=True)
 
     def __repr__(self):
-        return f"self.text ({self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5})"
+        return f"{self.text}({self.duration}{self.get_duration_type_display})" \
+               f" <{self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5}>"
 
     def __str__(self):
-        return f"self.text ({self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5})"
+        return f"{self.text}({self.duration}{self.get_duration_type_display})" \
+               f" <{self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5}>"
 
 
 class ActiveSkill(models.Model):
@@ -236,11 +246,11 @@ class ActiveSkill(models.Model):
     # 名前
     name = models.CharField(max_length=64)
     # アイコン
-    icon = models.ImageField(upload_to='images/', null=True)
+    icon = models.ImageField(upload_to='images/', blank=True, null=True)
     # ランク
-    rank = models.CharField(max_length=4, null=True)
+    rank = models.CharField(max_length=4, blank=True, default="")
     # チャージタイム
-    charge_time = models.IntegerField()
+    CT = models.IntegerField()
     # 効果
     effect = models.ManyToManyField('NoblePhantasmEffect', related_name="active_skill")
 
@@ -253,19 +263,27 @@ class ActiveSkill(models.Model):
 
 class ActiveSkillEffect(models.Model):
     # 効果
-    text = models.TextField(default="テキスト")
+    text = models.TextField(default="")
+    # 持続時間
+    duration = models.IntegerField(blank=True, null=True)
+    duration_type = models.CharField(choices=(("turn", "ターン"), ("times", "回")), max_length=8, blank=True, null=True)
     # 数値
-    value1 = models.IntegerField()
-    value2 = models.IntegerField()
-    value3 = models.IntegerField()
-    value4 = models.IntegerField()
-    value5 = models.IntegerField()
+    level1 = models.FloatField(blank=True, null=True)
+    level2 = models.FloatField(blank=True, null=True)
+    level3 = models.FloatField(blank=True, null=True)
+    level4 = models.FloatField(blank=True, null=True)
+    level5 = models.FloatField(blank=True, null=True)
+    level6 = models.FloatField(blank=True, null=True)
+    level7 = models.FloatField(blank=True, null=True)
+    level8 = models.FloatField(blank=True, null=True)
+    level9 = models.FloatField(blank=True, null=True)
+    level10 = models.FloatField(blank=True, null=True)
 
     def __repr__(self):
-        return f"self.text ({self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5})"
+        return f"{self.text}({self.duration}{self.get_duration_type_display}) <{self.level1}→→{self.level10}>"
 
     def __str__(self):
-        return f"self.text ({self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5})"
+        return f"{self.text}({self.duration}{self.get_duration_type_display}) <{self.level1}→→{self.level10}>"
 
 
 class PassiveSkill(models.Model):
@@ -275,9 +293,9 @@ class PassiveSkill(models.Model):
     # 名前
     name = models.CharField(max_length=64)
     # アイコン
-    icon = models.ImageField(upload_to='images/', null=True)
+    icon = models.ImageField(upload_to='images/', blank=True, null=True)
     # ランク
-    rank = models.CharField(max_length=4)
+    rank = models.CharField(max_length=4, blank=True, default="")
     # 効果
     effect = models.ManyToManyField('NoblePhantasmEffect', related_name="passive_skill")
 
@@ -290,19 +308,18 @@ class PassiveSkill(models.Model):
 
 class PassiveSkillEffect(models.Model):
     # 効果
-    text = models.TextField(default="テキスト")
+    text = models.TextField(default="")
+    # 持続時間
+    duration = models.IntegerField(blank=True, null=True)
+    duration_type = models.CharField(choices=(("turn", "ターン"), ("times", "回")), max_length=8, blank=True, null=True)
     # 数値
-    value1 = models.IntegerField()
-    value2 = models.IntegerField()
-    value3 = models.IntegerField()
-    value4 = models.IntegerField()
-    value5 = models.IntegerField()
+    value = models.FloatField(blank=True, null=True)
 
     def __repr__(self):
-        return f"self.text ({self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5})"
+        return f"{self.text}({self.duration}{self.get_duration_type_display}) <{self.value}>"
 
     def __str__(self):
-        return f"self.text ({self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5})"
+        return f"{self.text}({self.duration}{self.get_duration_type_display}) <{self.value}>"
 
 
 class Synthesis(models.Model):
@@ -339,7 +356,7 @@ class CraftEssence(models.Model):
     # レアリティ
     rarity = models.IntegerField()
     # アイコン
-    icon = models.ImageField(upload_to='images/', null=True)
+    icon = models.ImageField(upload_to='images/', blank=True, null=True)
     # テキスト
     text = models.TextField(default="テキスト")
 

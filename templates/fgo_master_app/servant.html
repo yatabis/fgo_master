@@ -1,11 +1,11 @@
 {% extends "fgo_master_app/base.html" %}
 {% block title %}サーヴァント一覧{% endblock %}
 
+{% block main-title %}サーヴァント一覧{% endblock %}
+{% block sub-title %}Servant{% endblock %}
+
 {% block main %}
-  <div class="content-title">
-    <h2 class="content-main-title">サーヴァント一覧</h2>
-    <h4 class="content-sub-title">Servant</h4>
-  </div>
+
   {% for servant in servants_list %}
     <div class="content-wrapper">
       <div class="content-icon">
@@ -19,4 +19,5 @@
       </div>
     </div>
   {% endfor %}
+
 {% endblock %}
