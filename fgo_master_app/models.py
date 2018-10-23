@@ -153,7 +153,7 @@ class Servant(models.Model):
         return self.name
 
     def __str__(self):
-        return self.name
+        return self.__repr__()
 
 
 class NoblePhantasm(models.Model):
@@ -194,9 +194,6 @@ class NoblePhantasm(models.Model):
     anti = models.CharField(max_length=8, blank=True, default="")
     # テキスト
     text = models.TextField(blank=True, default="")
-    # 持続時間
-    duration = models.IntegerField(blank=True, null=True)
-    duration_type = models.CharField(choices=(("turn", "ターン"), ("times", "回")), max_length=8, blank=True, null=True)
     # ヒット数
     hits = models.IntegerField(blank=True, null=True)
     # 倍率
@@ -206,13 +203,13 @@ class NoblePhantasm(models.Model):
     value4 = models.FloatField(blank=True, null=True)
     value5 = models.FloatField(blank=True, null=True)
     # 効果
-    effect = models.ManyToManyField('NoblePhantasmEffect', related_name="noble_phantasm")
+    effect = models.ManyToManyField('NoblePhantasmEffect', related_name="noble_phantasm", blank=True, null=True)
 
     def __repr__(self):
         return f"{self.name} ({self.yomi})"
 
     def __str__(self):
-        return f"{self.name} ({self.yomi})"
+        return self.__repr__()
 
 
 class NoblePhantasmEffect(models.Model):
@@ -231,20 +228,22 @@ class NoblePhantasmEffect(models.Model):
     value5 = models.FloatField(blank=True, null=True)
 
     def __repr__(self):
-        return f"{self.text}({self.duration}{self.get_duration_type_display})" \
+        return f"{self.text}({self.duration}{self.get_duration_type_display()})" \
                f" <{self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5}>"
 
     def __str__(self):
-        return f"{self.text}({self.duration}{self.get_duration_type_display})" \
-               f" <{self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5}>"
+        return self.__repr__()
 
 
 class ActiveSkill(models.Model):
 
+    # アイコンのセット
+    ICON_SET = ()
+
     # 名前
     name = models.CharField(max_length=64)
     # アイコン
-    icon = models.ImageField(upload_to='images/', blank=True, null=True)
+    icon = models.CharField(choices=ICON_SET, max_length=64, blank=True, default="")
     # ランク
     rank = models.CharField(max_length=4, blank=True, default="")
     # チャージタイム
@@ -264,32 +263,27 @@ class ActiveSkillEffect(models.Model):
     text = models.TextField(default="")
     # 持続時間
     duration = models.IntegerField(blank=True, null=True)
-    duration_type = models.CharField(choices=(("turn", "ターン"), ("times", "回")), max_length=8, blank=True, null=True)
+    duration_type = models.CharField(choices=(("turn", "ターン"), ("times", "回")), max_length=8, blank=True, default="")
     # 数値
-    level1 = models.FloatField(blank=True, null=True)
-    level2 = models.FloatField(blank=True, null=True)
-    level3 = models.FloatField(blank=True, null=True)
-    level4 = models.FloatField(blank=True, null=True)
-    level5 = models.FloatField(blank=True, null=True)
-    level6 = models.FloatField(blank=True, null=True)
-    level7 = models.FloatField(blank=True, null=True)
-    level8 = models.FloatField(blank=True, null=True)
-    level9 = models.FloatField(blank=True, null=True)
-    level10 = models.FloatField(blank=True, null=True)
+    value = models.FloatField(blank=True, null=True)
+    step = models.FloatField(blank=True, null=True)
 
     def __repr__(self):
-        return f"{self.text}({self.duration}{self.get_duration_type_display}) <{self.level1}→→{self.level10}>"
+        return f"{self.text}({self.duration}{self.get_duration_type_display()}) [{self.value} + {self.step}]"
 
     def __str__(self):
-        return f"{self.text}({self.duration}{self.get_duration_type_display}) <{self.level1}→→{self.level10}>"
+        return self.__repr__()
 
 
 class PassiveSkill(models.Model):
 
+    # アイコンのセット
+    ICON_SET = ()
+
     # 名前
     name = models.CharField(max_length=64)
     # アイコン
-    icon = models.ImageField(upload_to='images/', blank=True, null=True)
+    icon = models.CharField(choices=ICON_SET, max_length=64, blank=True, default="")
     # ランク
     rank = models.CharField(max_length=4, blank=True, default="")
     # 効果
@@ -299,7 +293,7 @@ class PassiveSkill(models.Model):
         return f"{self.name} {self.rank}"
 
     def __str__(self):
-        return f"{self.name} {self.rank}"
+        return self.__repr__()
 
 
 class PassiveSkillEffect(models.Model):
@@ -307,15 +301,15 @@ class PassiveSkillEffect(models.Model):
     text = models.TextField(default="")
     # 持続時間
     duration = models.IntegerField(blank=True, null=True)
-    duration_type = models.CharField(choices=(("turn", "ターン"), ("times", "回")), max_length=8, blank=True, null=True)
+    duration_type = models.CharField(choices=(("turn", "ターン"), ("times", "回")), max_length=8, blank=True, default="")
     # 数値
     value = models.FloatField(blank=True, null=True)
 
     def __repr__(self):
-        return f"{self.text}({self.duration}{self.get_duration_type_display}) <{self.value}>"
+        return f"{self.text}({self.duration}{self.get_duration_type_display()}) [{self.value}]"
 
     def __str__(self):
-        return f"{self.text}({self.duration}{self.get_duration_type_display}) <{self.value}>"
+        return self.__repr__()
 
 
 class Synthesis(models.Model):
@@ -344,15 +338,25 @@ class Synthesis(models.Model):
     skill_up8 = models.IntegerField(default=0)
     skill_up9 = models.IntegerField(default=0)
 
+    def __repr__(self):
+        total = self.ascension1 + self.ascension2 + self.ascension3 + self.ascension4 + self.skill_up1 + self.skill_up2 + self.skill_up3 + self.skill_up4 + self.skill_up5 + self.skill_up6 + self.skill_up7 + self.skill_up8 + self.skill_up9
+        return f"{self.material} {total}"
+
+    def __str__(self):
+        return self.__repr__()
+
 
 class CraftEssence(models.Model):
+
+    # アイコンのセット
+    ICON_SET = ()
 
     # 名前
     name = models.CharField(max_length=64)
     # レアリティ
     rarity = models.IntegerField()
     # アイコン
-    icon = models.ImageField(upload_to='images/', blank=True, null=True)
+    icon = models.CharField(choices=ICON_SET, max_length=64, blank=True, default="")
     # テキスト
     text = models.TextField(default="テキスト")
 

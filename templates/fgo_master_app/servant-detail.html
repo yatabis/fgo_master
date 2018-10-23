@@ -39,7 +39,7 @@
       </table>
       <p>
         {{ servant.noble_phantasm.text }}
-        {% for effect in servant.noble_phantasm.effect %}
+        {% for effect in servant.noble_phantasm.effect.all %}
           +{{ effect.text }}
         {% endfor %}
       </p>
@@ -50,16 +50,16 @@
     <span class="detail-caption">保有スキル</span>
     <div class="detail-main">
       <table width="100%">
-        {% for skill in servant.active_skill %}
+        {% for skill in servant.active_skill.all %}
           <tr>
             <td>SKILL {{ forloop.counter }}</td>
-            <td rowspan="2">{{ skill.icon }}</td>
+            <td rowspan="2"><img src={{ skill.icon.url }}"</td>
             <td>{{ skill.name }} {{ skill.rank }}</td>
           </tr>
           <tr>
             <td>CT {{ skill.CT }}</td>
             <td>
-              {% for effect in skill.effect %}
+              {% for effect in skill.effect.all %}
                 {{ effect.text }}
               {% endfor %}
             </td>
@@ -73,7 +73,7 @@
     <span class="detail-caption">クラススキル</span>
     <div class="detail-main">
       <table width="100%">
-        {% for skill in servant.passive_skill %}
+        {% for skill in servant.passive_skill.all %}
           <tr>
             <td rowspan="2">SKILL {{ forloop.counter }}</td>
             <td rowspan="2">{{ skill.icon }}</td>
@@ -81,7 +81,7 @@
           </tr>
           <tr>
             <td>
-              {% for effect in skill.effect %}
+              {% for effect in skill.effect.all %}
                 {{ effect.text }}
               {% endfor %}
             </td>

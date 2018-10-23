@@ -17,7 +17,7 @@ $background_down: #ffb;
   header {
     height: $header-height;
     background-color: #f88;
-    font-size: $header-height / 2;
+    font-size: $header-height * 0.4;
     text-align: center;
 
     a {
