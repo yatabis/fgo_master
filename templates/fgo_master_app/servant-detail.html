@@ -1,5 +1,5 @@
 {% extends "fgo_master_app/base.html" %}
-{% block title %}サーヴァント一覧{% endblock %}
+{% block title %}{{ servant.name }} | FGOカルデアデータベース{% endblock %}
 
 {% block main-title %}No. {{ servant.No }}　{{ servant.name }}{% endblock %}
 {% block sub-title %}{{ servant.get_class_name_display }}{% endblock %}
