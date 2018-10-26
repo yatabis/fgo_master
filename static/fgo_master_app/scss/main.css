@@ -2,20 +2,24 @@
   header {
     height: 15vh;
     background-color: #f88;
-    font-size: 6vh;
     text-align: center; }
     header a {
       display: block;
       width: 100%;
       height: 100%; }
+      header a .sub-header {
+        font-size: 4.5vh; }
+      header a .main-header {
+        font-size: 6vh; }
 
   main {
     min-height: 80vh;
     background-size: 30px 30px, 30px 30px, auto;
     background-image: radial-gradient(#bbb 3%, transparent 5%), radial-gradient(#bbb 3%, transparent 5%), linear-gradient(#bdf, #ffb);
-    background-position: 0 0, 15px 15px, 0 0; }
-    main .content-title {
-      text-align: right; }
+    background-position: 0 0, 15px 15px, 0 0;
+    /*.content-title {
+      text-align: right;
+    }*/ }
     main .detail-main-title {
       font-size: 4vh;
       margin: 0; }

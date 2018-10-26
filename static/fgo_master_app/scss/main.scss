@@ -17,13 +17,20 @@ $background_down: #ffb;
   header {
     height: $header-height;
     background-color: #f88;
-    font-size: $header-height * 0.4;
     text-align: center;
 
     a {
       display: block;
       width: 100%;
       height: 100%;
+
+      .sub-header {
+        font-size: $header-height * 0.3;
+      }
+
+      .main-header {
+        font-size: $header-height * 0.4;
+      }
     }
   }
 
@@ -35,9 +42,9 @@ $background_down: #ffb;
     linear-gradient($background_up, $background_down);
     background-position: 0 0, 15px 15px, 0 0;
 
-    .content-title {
+    /*.content-title {
       text-align: right;
-    }
+    }*/
 
     .detail-main-title {
       font-size: $detail-main-fs;

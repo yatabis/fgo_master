@@ -36,9 +36,10 @@ class Servant(models.Model):
     )
 
     # 番号
-    No = models.AutoField(primary_key=True)
+    No = models.IntegerField()
     # 名前
     name = models.CharField(max_length=64)
+    name_en = models.CharField(max_length=64)
     # クラス
     class_name = models.CharField(choices=CLASS_SET, default=SABER, max_length=16)
     # レアリティ
@@ -49,11 +50,11 @@ class Servant(models.Model):
     # Detail
 
     # 相性のセット
-    SKY = "sky"
-    EARTH = "earth"
-    MAN = "man"
-    STAR = "star"
-    BEAST = "beast"
+    SKY = "Sky"
+    EARTH = "Earth"
+    MAN = "Man"
+    STAR = "Star"
+    BEAST = "Beast"
     SYNASTRY_SET = (
         (SKY, "天"),
         (EARTH, "地"),
@@ -63,10 +64,10 @@ class Servant(models.Model):
     )
 
     # 方針のセット
-    LAWFUL = "cosmos"
-    CHAOTIC = "chaos"
-    NEUTRAL = "neutral"
-    OTHER = "other"
+    LAWFUL = "Lawful"
+    CHAOTIC = "Chaotic"
+    NEUTRAL = "Neutral"
+    OTHER = "Other"
     POLICY_SET = (
         (LAWFUL, "秩序"),
         (CHAOTIC, "混沌"),
@@ -75,33 +76,33 @@ class Servant(models.Model):
     )
 
     # 性格のセット
-    GOOD = "good"
-    EViL = "evil"
-    INSANE = "insane"
+    GOOD = "Good"
+    EViL = "Evil"
+    MADNESS = "Madness"
     CHARACTER_SET = (
         (GOOD, "善"),
         (EViL, "悪"),
         (NEUTRAL, "中庸"),
-        (INSANE, "狂"),
+        (MADNESS, "狂"),
         (OTHER, "その他"),
     )
 
     # 性別のセット
-    MALE = "male"
-    FEMALE = "female"
-    SEX_SET = (
+    MALE = "Male"
+    FEMALE = "Female"
+    GENDER_SET = (
         (MALE, "男性"),
         (FEMALE, "女性"),
         (OTHER, "その他"),
     )
 
     # コマンドカード配分のセット
-    QUICK3 = "quick3"
-    ARTS3 = "arts3"
-    BUSTER3 = "buster3"
-    QUICK1 = "quick1"
-    ARTS1 = "arts1"
-    BUSTER1 = "buster1"
+    QUICK3 = "Quick3"
+    ARTS3 = "Arts3"
+    BUSTER3 = "Buster3"
+    QUICK1 = "Quick1"
+    ARTS1 = "Arts1"
+    BUSTER1 = "Buster1"
     CC_DISTRIBUTION = (
         (QUICK3, "QQQAB"),
         (ARTS3, "QAAAB"),
@@ -117,10 +118,6 @@ class Servant(models.Model):
     arts_hits = models.IntegerField(default=1)
     buster_hits = models.IntegerField(default=1)
     extra_hits = models.IntegerField(default=1)
-    # 保有スキル
-    active_skill = models.ManyToManyField('ActiveSkill')
-    # クラススキル
-    passive_skill = models.ManyToManyField('PassiveSkill')
     # 基礎ステータス
     base_HP = models.IntegerField(default=0)
     max_HP = models.IntegerField(default=0)
@@ -128,8 +125,6 @@ class Servant(models.Model):
     base_ATK = models.IntegerField(default=0)
     max_ATK = models.IntegerField(default=0)
     palingenesis_ATK = models.IntegerField(default=0)
-    # 強化
-    synthesis = models.OneToOneField('Synthesis', on_delete=models.CASCADE, blank=True, null=True)
     # 相性
     attribute = models.CharField(choices=SYNASTRY_SET, max_length=8, default=MAN)
     # 方針
@@ -137,20 +132,20 @@ class Servant(models.Model):
     # 性格
     alignment2 = models.CharField(choices=CHARACTER_SET, max_length=8, default=GOOD)
     # 性別
-    sex = models.CharField(choices=SEX_SET, max_length=8, default=MALE)
+    gender = models.CharField(choices=GENDER_SET, max_length=8, default=FEMALE)
     # スター発生率
-    star_getting_rate = models.FloatField(default=0)
-    # スター集中率
-    star_focusing_rate = models.FloatField(default=0)
+    star_drop_rate = models.FloatField(default=0)
+    # スター集中度
+    star_gather_rate = models.FloatField(default=0)
     # 即死率
     death_rate = models.FloatField(default=100)
     # 攻撃時のNP上昇基礎値
     NP_with_attack = models.FloatField(default=0)
     # 被ダメ時のNP上昇基礎値
-    NP_with_damage = models.FloatField(default=0)
+    NP_gain_from_damage = models.FloatField(default=0)
 
     def __repr__(self):
-        return self.name
+        return f"{self.name} ({self.class_name})"
 
     def __str__(self):
         return self.__repr__()
