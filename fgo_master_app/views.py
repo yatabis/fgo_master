@@ -1,4 +1,4 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView
 
 from .models import Servant
@@ -13,7 +13,7 @@ class TopMenuView(TemplateView):
 
 
 # TopMenu階層
-class CardDataView(TemplateView):
+class SpiritOriginView(TemplateView):
 
     template_name = "fgo_master_app/card-data.html"
 
@@ -28,10 +28,10 @@ class BattleSimulatorView(TemplateView):
     template_name = "fgo_master_app/battle-simulation.html"
 
 
-# CardData階層
+# SpiritOrigin階層
 class ServantView(ListView):
 
-    model = Servant
+    queryset = Servant.objects.order_by('No')
     context_object_name = "servants_list"
     template_name = "fgo_master_app/servant.html"
     paginate_by = 20
@@ -57,6 +57,4 @@ class ServantDetailView(DetailView):
 
     model = Servant
     template_name = "fgo_master_app/servant-detail.html"
-    # pk_url_kwarg = "name"
-    slug_field = "name"
-    slug_url_kwarg = "name"
+    slug_field = "No"

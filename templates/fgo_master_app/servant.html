@@ -11,7 +11,7 @@
       <div class="content-icon">
         icon
       </div>
-      <a class="content-main-name servant_list" href="{% url "servant-detail" servant.name %}">
+      <a class="content-main-name servant_list" href="{% url "servant-detail" servant.name_en|slugify servant.No %}">
         {{ servant.name }}
       </a>
       <div class="content-sub-name">

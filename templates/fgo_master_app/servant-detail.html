@@ -53,7 +53,7 @@
         {% for skill in servant.active_skill.all %}
           <tr>
             <td>SKILL {{ forloop.counter }}</td>
-            <td rowspan="2"><img src={{ skill.icon.url }}"</td>
+            <td rowspan="2"><img src={{ skill.icon.url }}></td>
             <td>{{ skill.name }} {{ skill.rank }}</td>
           </tr>
           <tr>

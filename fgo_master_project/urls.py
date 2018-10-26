@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('fgo-master-app/', include('fgo_master_app.urls')),
+    path('fgo-chaldea-database/', include('fgo_master_app.urls')),
     path('admin/', admin.site.urls),
 ]
 

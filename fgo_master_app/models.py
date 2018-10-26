@@ -36,7 +36,7 @@ class Servant(models.Model):
     )
 
     # 番号
-    No = models.IntegerField()
+    No = models.IntegerField(primary_key=True)
     # 名前
     name = models.CharField(max_length=64)
     name_en = models.CharField(max_length=64)

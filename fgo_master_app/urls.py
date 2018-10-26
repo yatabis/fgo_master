@@ -1,22 +1,21 @@
 from django.urls import path
 
-
 from .views import TopMenuView
-from .views import CardDataView, SynthesisSchemeView, BattleSimulatorView
+from .views import SpiritOriginView, SynthesisSchemeView, BattleSimulatorView
 from .views import ServantView, CraftEssenceView, CommandCodeView, MysticCodeView
 from .views import ServantDetailView
 
 urlpatterns = [
-    path('top-menu/', TopMenuView.as_view(), name="top-menu"),
+    path('', TopMenuView.as_view(), name="top-menu"),
 
-    path('card-data/', CardDataView.as_view(), name="card-data"),
+    path('spirit-origin/', SpiritOriginView.as_view(), name="spirit-origin"),
     path('synthesis-scheme/', SynthesisSchemeView.as_view(), name="synthesis-scheme"),
     path('battle-simulator', BattleSimulatorView.as_view(), name="battle-simulator"),
 
-    path('card-data/servant/', ServantView.as_view(), name="servant"),
-    path('card-data/craft-essence/', CraftEssenceView.as_view(), name="craft-essence"),
-    path('card-data/command-code/', CommandCodeView.as_view(), name="command-code"),
-    path('card-data/mystic-code/', MysticCodeView.as_view(), name="mystic-code"),
+    path('spirit-origin/servant/', ServantView.as_view(), name="servant"),
+    path('spirit-origin/craft-essence/', CraftEssenceView.as_view(), name="craft-essence"),
+    path('spirit-origin/command-code/', CommandCodeView.as_view(), name="command-code"),
+    path('spirit-origin/mystic-code/', MysticCodeView.as_view(), name="mystic-code"),
 
-    path('card-data/servant/<str:name>/', ServantDetailView.as_view(), name="servant-detail"),
+    path('spirit-origin/servant/<str:name><int:pk>/', ServantDetailView.as_view(), name="servant-detail"),
 ]
