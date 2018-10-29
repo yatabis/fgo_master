@@ -35,20 +35,6 @@ class Servant(models.Model):
         (FOREIGNER, "フォーリナー"),
     )
 
-    # 番号
-    No = models.IntegerField(primary_key=True)
-    # 名前
-    name = models.CharField(max_length=64)
-    name_en = models.CharField(max_length=64)
-    # クラス
-    class_name = models.CharField(choices=CLASS_SET, default=SABER, max_length=16)
-    # レアリティ
-    rarity = models.IntegerField()
-    # コスト
-    cost = models.IntegerField()
-
-    # Detail
-
     # 相性のセット
     SKY = "Sky"
     EARTH = "Earth"
@@ -112,19 +98,17 @@ class Servant(models.Model):
         (BUSTER1, "QQAAB"),
     )
 
-    # コマンドカード
-    command_cards_distribution = models.CharField(max_length=8, choices=CC_DISTRIBUTION, default=QUICK1)
-    quick_hits = models.IntegerField(default=1)
-    arts_hits = models.IntegerField(default=1)
-    buster_hits = models.IntegerField(default=1)
-    extra_hits = models.IntegerField(default=1)
-    # 基礎ステータス
-    base_HP = models.IntegerField(default=0)
-    max_HP = models.IntegerField(default=0)
-    palingenesis_HP = models.IntegerField(default=0)
-    base_ATK = models.IntegerField(default=0)
-    max_ATK = models.IntegerField(default=0)
-    palingenesis_ATK = models.IntegerField(default=0)
+    # 番号
+    No = models.IntegerField(primary_key=True)
+    # 名前
+    name = models.CharField(max_length=64)
+    name_en = models.CharField(max_length=64)
+    # クラス
+    class_name = models.CharField(choices=CLASS_SET, default=SABER, max_length=16)
+    # レアリティ
+    rarity = models.IntegerField()
+    # コスト
+    cost = models.IntegerField()
     # 相性
     attribute = models.CharField(choices=SYNASTRY_SET, max_length=8, default=MAN)
     # 方針
@@ -133,6 +117,65 @@ class Servant(models.Model):
     alignment2 = models.CharField(choices=CHARACTER_SET, max_length=8, default=GOOD)
     # 性別
     gender = models.CharField(choices=GENDER_SET, max_length=8, default=FEMALE)
+    # コマンドカード
+    command_cards_distribution = models.CharField(max_length=8, choices=CC_DISTRIBUTION, default=QUICK1)
+    quick_hits = models.IntegerField(default=1)
+    arts_hits = models.IntegerField(default=1)
+    buster_hits = models.IntegerField(default=1)
+    extra_hits = models.IntegerField(default=1)
+
+    # Detail
+
+    # プロフィール
+    # イラストレーター
+    illust = models.CharField(max_length=64, null=True)
+    # 声優
+    cv = models.CharField(max_length=64, null=True)
+
+    # パラメーター
+    # 筋力
+    str = models.CharField(max_length=4, default="A")
+    # 敏捷
+    agl = models.CharField(max_length=4, default="A")
+    # 幸運
+    luk = models.CharField(max_length=4, default="A")
+    # 耐久
+    end = models.CharField(max_length=4, default="A")
+    # 魔力
+    mp = models.CharField(max_length=4, default="A")
+    # 宝具
+    np = models.CharField(max_length=4, default="A")
+    # 身長
+    height = models.IntegerField(default=0)
+    # 体重
+    weight = models.IntegerField(default=0)
+    # 出典
+    origin = models.CharField(max_length=64, null=True)
+    # 地域
+    region = models.CharField(max_length=64, null=True)
+    # ステータス
+    HP1 = models.IntegerField(default=0)
+    HP10 = models.IntegerField(default=0)
+    HP20 = models.IntegerField(default=0)
+    HP30 = models.IntegerField(default=0)
+    HP40 = models.IntegerField(default=0)
+    HP50 = models.IntegerField(default=0)
+    HP60 = models.IntegerField(default=0)
+    HP70 = models.IntegerField(default=0)
+    HP80 = models.IntegerField(default=0)
+    HP90 = models.IntegerField(default=0)
+    HP100 = models.IntegerField(default=0)
+    ATK1 = models.IntegerField(default=0)
+    ATK10 = models.IntegerField(default=0)
+    ATK20 = models.IntegerField(default=0)
+    ATK30 = models.IntegerField(default=0)
+    ATK40 = models.IntegerField(default=0)
+    ATK50 = models.IntegerField(default=0)
+    ATK60 = models.IntegerField(default=0)
+    ATK70 = models.IntegerField(default=0)
+    ATK80 = models.IntegerField(default=0)
+    ATK90 = models.IntegerField(default=0)
+    ATK100 = models.IntegerField(default=0)
     # スター発生率
     star_drop_rate = models.FloatField(default=0)
     # スター集中度

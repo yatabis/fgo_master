@@ -18,6 +18,10 @@
           <td class="status">cost {{ servant.cost }}</td>
           <td class="status">ATK {{ servant.max_ATK }}</td>
         </tr>
+        <tr>
+          <td class="status">{{ servant.get_alignment1_display }}・{{ servant.get_alignment2_display }}／{{ servant.get_attribute_display }}</td>
+          <td class="status">{{ servant.get_gender_display }}</td>
+        </tr>
       </table>
     </div>
   </div>
@@ -91,17 +95,151 @@
     </div>
   </div>
 
-  <h3>詳細</h3>
-  <p>コマンドカード　{{ servant.get_command_cards_distribution_display }}</p>
-  <p>属性　{{ servant.get_alignment1_display }}・{{ servant.get_alignment2_display }}</p>
-  <p>隠し属性　{{ servant.get_attribute_display }}</p>
-  <p>性別　{{ servant.get_gender_display }}</p>
-  <p>基礎ステータス</p>
-  <p>HP　{{ servant.base_HP }} {{ servant.max_HP }} {{ servant.palingenesis_HP }}</p>
-  <p>ATK　{{ servant.base_ATK }} {{ servant.max_ATK }} {{ servant.palingenesis_ATK }}</p>
-  <p>スター発生率　{{ servant.star_getting_rate }}</p>
-  <p>スター集中率　{{ servant.star_focusing_rate }}</p>
-  <p>即死率　{{ servant.death_rate }}</p>
-  <p>NP上昇基礎値（攻撃時／被ダメ時）　{{ servant.NP_with_attack }} / {{ servant.NP_with_damage }}</p>
+  <details>
+    <summary>詳細データ</summary>
+    <div class="detail-wrapper">
+      <span class="detail-caption">イラストレーター・声優</span>
+      <div class="detail-main">
+        <table width="100%">
+          <tr>
+            <td>ILLUST</td>
+            <td>{{ servant.illust }}</td>
+          </tr>
+          <tr>
+            <td>CV</td>
+            <td>{{ servant.cv }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="detail-wrapper">
+      <span class="detail-caption">パラメーター</span>
+      <div class="detail-main">
+        <table width="100%">
+          <tr>
+            <td>筋力</td>
+            <td>筋力パラメータ</td>
+            <td>{{ servant.str }}</td>
+            <td>耐久</td>
+            <td>耐久パラメータ</td>
+            <td>{{ servant.end }}</td>
+          </tr>
+          <tr>
+            <td>敏捷</td>
+            <td>敏捷パラメータ</td>
+            <td>{{ servant.agl }}</td>
+            <td>魔力</td>
+            <td>魔力パラメータ</td>
+            <td>{{ servant.mp }}</td>
+          </tr>
+          <tr>
+            <td>幸運</td>
+            <td>幸運パラメータ</td>
+            <td>{{ servant.luk }}</td>
+            <td>宝具</td>
+            <td>宝具パラメータ</td>
+            <td>{{ servant.np }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="detail-wrapper">
+      <span class="detail-caption">ステータス</span>
+      <div class="detail-main">
+        <table width="100%">
+          <tr>
+            <td>レベル</td>
+            <td>HP</td>
+            <td>ATK</td>
+          </tr>
+          <tr>
+            <td>Lv.1</td>
+            <td>{{ servant.HP1 }}</td>
+            <td>{{ servant.ATK1 }}</td>
+          </tr>
+          <tr>
+            <td>Lv.10</td>
+            <td>{{ servant.HP10 }}</td>
+            <td>{{ servant.ATK10 }}</td>
+          </tr>
+          <tr>
+            <td>Lv.20</td>
+            <td>{{ servant.HP20 }}</td>
+            <td>{{ servant.ATK20 }}</td>
+          </tr>
+          <tr>
+            <td>Lv.30</td>
+            <td>{{ servant.HP30 }}</td>
+            <td>{{ servant.ATK30 }}</td>
+          </tr>
+          <tr>
+            <td>Lv.40</td>
+            <td>{{ servant.HP40 }}</td>
+            <td>{{ servant.ATK40 }}</td>
+          </tr>
+          <tr>
+            <td>Lv.50</td>
+            <td>{{ servant.HP50 }}</td>
+            <td>{{ servant.ATK50 }}</td>
+          </tr>
+          <tr>
+            <td>Lv.60</td>
+            <td>{{ servant.HP60 }}</td>
+            <td>{{ servant.ATK60 }}</td>
+          </tr>
+          <tr>
+            <td>Lv.70</td>
+            <td>{{ servant.HP70 }}</td>
+            <td>{{ servant.ATK70 }}</td>
+          </tr>
+          <tr>
+            <td>Lv.80</td>
+            <td>{{ servant.HP80 }}</td>
+            <td>{{ servant.ATK80 }}</td>
+          </tr>
+          <tr>
+            <td>Lv.90</td>
+            <td>{{ servant.HP90 }}</td>
+            <td>{{ servant.ATK90 }}</td>
+          </tr>
+          <tr>
+            <td>Lv.100</td>
+            <td>{{ servant.HP100 }}</td>
+            <td>{{ servant.ATK100 }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="detail-wrapper">
+      <span class="detail-caption">その他の性能</span>
+      <div class="detail-main">
+        <table width="100%">
+          <tr>
+            <td>スター発生率</td>
+            <td>{{ servant.star_drop_rate }}</td>
+          </tr>
+          <tr>
+            <td>スター集中率</td>
+            <td>{{ servant.star_gather_rate }}</td>
+          </tr>
+          <tr>
+            <td>即死率</td>
+            <td>{{ servant.death_rate }}</td>
+          </tr>
+          <tr>
+            <td>NP上昇基礎値（攻撃時）</td>
+            <td>{{ servant.NP_with_attack }}</td>
+          </tr>
+          <tr>
+            <td>NP上昇基礎値（被ダメ時）</td>
+            <td>{{ servant.NP_gain_from_damage }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </details>
 
 {% endblock %}
