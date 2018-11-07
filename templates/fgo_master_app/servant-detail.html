@@ -1,4 +1,5 @@
 {% extends "fgo_master_app/base.html" %}
+{% load static %}
 {% block title %}{{ servant.name }} | FGOカルデアデータベース{% endblock %}
 
 {% block main-title %}No. {{ servant.No }}　{{ servant.name }}{% endblock %}
@@ -12,11 +13,31 @@
       <table width="100%">
         <tr>
           <td class="status">{% for _ in value|center:servant.rarity %}⭐{% endfor %}</td>
-          <td class="status">HP {{ servant.max_HP }}</td>
+          {% if servant.rarity == 5 %}
+            <td class="status">HP {{ servant.HP90 }}</td>
+          {% elif servant.rarity == 4 %}
+            <td class="status">HP {{ servant.HP80 }}</td>
+          {% elif servant.rarity == 3 %}
+            <td class="status">HP {{ servant.HP70 }}</td>
+          {% elif servant.rarity == 2 %}
+            <td class="status">HP {{ servant.HP65 }}</td>
+          {% elif servant.rarity == 1 %}
+            <td class="status">HP {{ servant.HP60 }}</td>
+          {% endif %}
         </tr>
         <tr>
           <td class="status">cost {{ servant.cost }}</td>
-          <td class="status">ATK {{ servant.max_ATK }}</td>
+          {% if servant.rarity == 5 %}
+            <td class="status">ATK {{ servant.ATK90 }}</td>
+          {% elif servant.rarity == 4 %}
+            <td class="status">ATK {{ servant.ATK80 }}</td>
+          {% elif servant.rarity == 3 %}
+            <td class="status">ATK {{ servant.ATK70 }}</td>
+          {% elif servant.rarity == 2 %}
+            <td class="status">ATK {{ servant.ATK65 }}</td>
+          {% elif servant.rarity == 1 %}
+            <td class="status">ATK {{ servant.ATK60 }}</td>
+          {% endif %}
         </tr>
         <tr>
           <td class="status">{{ servant.get_alignment1_display }}・{{ servant.get_alignment2_display }}／{{ servant.get_attribute_display }}</td>
@@ -27,37 +48,41 @@
   </div>
 
   <div class="detail-wrapper">
-    <span class="detail-caption">宝具</span>
-    <div class="detail-main">
-      <p class="np-yomi">{{ servant.noble_phantasm.yomi }}</p>
-      <p class="np-name">{{ servant.noble_phantasm.name }}</p>
-      <table width="100%">
-        <tr>
-          <td>ランク</td>
-          <td>{{ servant.noble_phantasm.rank }}</td>
-        </tr>
-        <tr>
-          <td>種別</td>
-          <td>{{ servant.noble_phantasm.anti }}</td>
-        </tr>
-      </table>
-      <p>
-        {{ servant.noble_phantasm.text }}
-        {% for effect in servant.noble_phantasm.effect.all %}
-          +{{ effect.text }}
-        {% endfor %}
-      </p>
-    </div>
+    {% with noble_phantasm=servant.noble_phantasm.last %}
+      <span class="detail-caption">宝具</span>
+      <div class="detail-main">
+        <p class="np-yomi">{{ noble_phantasm.yomi }}</p>
+        <p class="np-name">{{ noble_phantasm.name }}</p>
+        <table width="100%">
+          <tr>
+            <td>ランク</td>
+            <td>{{ noble_phantasm.rank }}</td>
+          </tr>
+          <tr>
+            <td>種別</td>
+            <td>{{ noble_phantasm.anti }}</td>
+          </tr>
+        </table>
+        <p>
+          {{ noble_phantasm.text }}
+          {% for effect in noble_phantasm.effect.all %}
+            {{ effect.text }}<br>
+          {% endfor %}
+        </p>
+      </div>
+    {% endwith %}
   </div>
 
   <div class="detail-wrapper">
     <span class="detail-caption">保有スキル</span>
     <div class="detail-main">
       <table width="100%">
-        {% for skill in servant.active_skill.all %}
+        {% for skill in servant.active_skills.all %}
           <tr>
             <td>SKILL {{ forloop.counter }}</td>
-            <td rowspan="2"><img src={{ skill.icon.url }}></td>
+            <td rowspan="2">
+              <img src="{% static "fgo_master_app/images/icon/active_skill" %}/{{ skill.get_icon_display }}"
+              style="width: 10vw"></td>
             <td>{{ skill.name }} {{ skill.rank }}</td>
           </tr>
           <tr>
@@ -77,7 +102,7 @@
     <span class="detail-caption">クラススキル</span>
     <div class="detail-main">
       <table width="100%">
-        {% for skill in servant.passive_skill.all %}
+        {% for skill in servant.passive_skills.all %}
           <tr>
             <td rowspan="2">SKILL {{ forloop.counter }}</td>
             <td rowspan="2">{{ skill.icon }}</td>

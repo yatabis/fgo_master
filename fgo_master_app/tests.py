@@ -2,6 +2,7 @@ from django.test import TestCase
 
 from .models import ActiveSkillEffect, PassiveSkillEffect
 from .models import Synthesis
+from .models import ActiveSkill
 
 # Create your tests here.
 
@@ -42,3 +43,8 @@ class SynthesisTest(TestCase):
                               skill_up8=8,
                               skill_up9=9)
         print(synthesis)
+
+
+class ActiveSkillTest(TestCase):
+    print(ActiveSkill.icon_list)
+    print(ActiveSkill.ICON_SET)

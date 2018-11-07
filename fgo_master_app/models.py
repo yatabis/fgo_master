@@ -1,4 +1,5 @@
 from django.db import models
+import os
 
 # Create your models here.
 
@@ -117,6 +118,16 @@ class Servant(models.Model):
     alignment2 = models.CharField(choices=CHARACTER_SET, max_length=8, default=GOOD)
     # 性別
     gender = models.CharField(choices=GENDER_SET, max_length=8, default=FEMALE)
+    # 宝具
+    noble_phantasm = models.ManyToManyField('NoblePhantasm', related_name="servant")
+    # 保有スキル
+    active_skill1 = models.ManyToManyField('ActiveSkill', related_name="servant")
+    active_skill2 = models.ManyToManyField('ActiveSkill', related_name="servant")
+    active_skill3 = models.ManyToManyField('ActiveSkill', related_name="servant")
+    # クラススキル
+    passive_skill1 = models.ManyToManyField('PassiveSkill', related_name="servant")
+    passive_skill2 = models.ManyToManyField('PassiveSkill', related_name="servant")
+    passive_skill3 = models.ManyToManyField('PassiveSkill', related_name="servant")
     # コマンドカード
     command_cards_distribution = models.CharField(max_length=8, choices=CC_DISTRIBUTION, default=QUICK1)
     quick_hits = models.IntegerField(default=1)
@@ -128,9 +139,9 @@ class Servant(models.Model):
 
     # プロフィール
     # イラストレーター
-    illust = models.CharField(max_length=64, null=True)
+    illust = models.CharField(max_length=64, default="")
     # 声優
-    cv = models.CharField(max_length=64, null=True)
+    cv = models.CharField(max_length=64, default="")
 
     # パラメーター
     # 筋力
@@ -150,9 +161,9 @@ class Servant(models.Model):
     # 体重
     weight = models.IntegerField(default=0)
     # 出典
-    origin = models.CharField(max_length=64, null=True)
+    origin = models.CharField(max_length=64, default="")
     # 地域
-    region = models.CharField(max_length=64, null=True)
+    region = models.CharField(max_length=64, default="")
     # ステータス
     HP1 = models.IntegerField(default=0)
     HP10 = models.IntegerField(default=0)
@@ -207,41 +218,30 @@ class NoblePhantasm(models.Model):
     )
 
     # 種類のセット
-    WHOLE = "whole"
+    ALL = "whole"
     SINGLE = "single"
     SUPPORT = "support"
     TYPE_SET = (
-        (WHOLE, "全体"),
+        (ALL, "全体"),
         (SINGLE, "単体"),
         (SUPPORT, "補助")
     )
 
-    # サーヴァント
-    servant = models.ForeignKey('Servant', on_delete=models.CASCADE, related_name="noble_phantasm", blank=True, null=True)
     # カード
     card = models.CharField(choices=CARD_SET, max_length=8, default=BUSTER)
     # 種類
-    type = models.CharField(choices=TYPE_SET, max_length=8, default=WHOLE)
+    type = models.CharField(choices=TYPE_SET, max_length=8, default=ALL)
     # 名称
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=64)
+    name_en = models.CharField(max_length=64)
     # 読み
-    yomi = models.CharField(max_length=128)
+    yomi = models.CharField(max_length=64)
     # ランク
     rank = models.CharField(max_length=4)
     # 種別
-    anti = models.CharField(max_length=8, blank=True, default="")
-    # テキスト
-    text = models.TextField(blank=True, default="")
-    # ヒット数
-    hits = models.IntegerField(blank=True, null=True)
-    # 倍率
-    value1 = models.FloatField(blank=True, null=True)
-    value2 = models.FloatField(blank=True, null=True)
-    value3 = models.FloatField(blank=True, null=True)
-    value4 = models.FloatField(blank=True, null=True)
-    value5 = models.FloatField(blank=True, null=True)
+    anti = models.CharField(max_length=8, default="")
     # 効果
-    effect = models.ManyToManyField('NoblePhantasmEffect', related_name="noble_phantasm", blank=True, null=True)
+    effect = models.ManyToManyField('NoblePhantasmEffect', related_name="noble_phantasm")
 
     def __repr__(self):
         return f"{self.name} ({self.yomi})"
@@ -251,13 +251,30 @@ class NoblePhantasm(models.Model):
 
 
 class NoblePhantasmEffect(models.Model):
+
+    # 対象のセット
+    YOURSELF = "yourself"
+    ALL_ALLIES = "all_allies"
+    SINGLE_ENEMY = "single_enemy"
+    ALL_ENEMIES = "all_enemies"
+    TARGET_SET = (
+        (YOURSELF, "自身"),
+        (ALL_ALLIES, "味方全体"),
+        (SINGLE_ENEMY, "敵単体"),
+        (ALL_ENEMIES, "敵全体")
+    )
+
+    # 種類
+    target = models.CharField(choices=TARGET_SET, max_length=8, default=ALL_ENEMIES)
     # 効果
     text = models.TextField(default="")
+    # ヒット数
+    hits = models.IntegerField(blank=True, null=True)
     # 持続時間
     duration = models.IntegerField(blank=True, null=True)
     duration_type = models.CharField(choices=(("turn", "ターン"), ("times", "回")), max_length=8, blank=True, null=True)
-    # OC
-    OC = models.BooleanField(default=True)
+    # 効果アップ
+    increase = models.CharField(choices=(("Lv", "Lv"), ("OC", "OC")), max_length=2, default="Lv")
     # 数値
     value1 = models.FloatField(blank=True, null=True)
     value2 = models.FloatField(blank=True, null=True)
@@ -266,7 +283,7 @@ class NoblePhantasmEffect(models.Model):
     value5 = models.FloatField(blank=True, null=True)
 
     def __repr__(self):
-        return f"{self.text}({self.duration}{self.get_duration_type_display()})" \
+        return f"{self.text}[{self.get_increase_display()}]({self.duration}{self.get_duration_type_display()})" \
                f" <{self.value1}→{self.value2}→{self.value3}→{self.value4}→{self.value5}>"
 
     def __str__(self):
@@ -276,10 +293,13 @@ class NoblePhantasmEffect(models.Model):
 class ActiveSkill(models.Model):
 
     # アイコンのセット
-    ICON_SET = ()
+    icon_file = "./static/fgo_master_app/images/icon/active_skill"
+    icon_list = os.listdir(icon_file)
+    ICON_SET = tuple((os.path.splitext(il)[0], il) for il in icon_list)
 
     # 名前
     name = models.CharField(max_length=64)
+    name_en = models.CharField(max_length=64)
     # アイコン
     icon = models.CharField(choices=ICON_SET, max_length=64, blank=True, default="")
     # ランク
@@ -316,7 +336,9 @@ class ActiveSkillEffect(models.Model):
 class PassiveSkill(models.Model):
 
     # アイコンのセット
-    ICON_SET = ()
+    icon_file = "./static/fgo_master_app/images/icon/passive_skill"
+    icon_list = os.listdir(icon_file)
+    ICON_SET = tuple((os.path.splitext(il)[0], il) for il in icon_list)
 
     # 名前
     name = models.CharField(max_length=64)
@@ -325,26 +347,12 @@ class PassiveSkill(models.Model):
     # ランク
     rank = models.CharField(max_length=4, blank=True, default="")
     # 効果
-    effect = models.ManyToManyField('PassiveSkillEffect', related_name="passive_skill")
-
-    def __repr__(self):
-        return f"{self.name} {self.rank}"
-
-    def __str__(self):
-        return self.__repr__()
-
-
-class PassiveSkillEffect(models.Model):
-    # 効果
     text = models.TextField(default="")
-    # 持続時間
-    duration = models.IntegerField(blank=True, null=True)
-    duration_type = models.CharField(choices=(("turn", "ターン"), ("times", "回")), max_length=8, blank=True, default="")
     # 数値
     value = models.FloatField(blank=True, null=True)
 
     def __repr__(self):
-        return f"{self.text}({self.duration}{self.get_duration_type_display()}) [{self.value}]"
+        return f"{self.name} {self.rank}"
 
     def __str__(self):
         return self.__repr__()
@@ -377,7 +385,9 @@ class Synthesis(models.Model):
     skill_up9 = models.IntegerField(default=0)
 
     def __repr__(self):
-        total = self.ascension1 + self.ascension2 + self.ascension3 + self.ascension4 + self.skill_up1 + self.skill_up2 + self.skill_up3 + self.skill_up4 + self.skill_up5 + self.skill_up6 + self.skill_up7 + self.skill_up8 + self.skill_up9
+        total = self.ascension1 + self.ascension2 + self.ascension3 + self.ascension4 + \
+                self.skill_up1 + self.skill_up2 + self.skill_up3 + self.skill_up4 + self.skill_up5 + \
+                self.skill_up6 + self.skill_up7 + self.skill_up8 + self.skill_up9
         return f"{self.material} {total}"
 
     def __str__(self):
@@ -397,6 +407,10 @@ class CraftEssence(models.Model):
     icon = models.CharField(choices=ICON_SET, max_length=64, blank=True, default="")
     # テキスト
     text = models.TextField(default="テキスト")
+
+
+class CraftEssenceEffect(models.Model):
+    pass
 
 
 class CommandCode(models.Model):

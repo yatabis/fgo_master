@@ -15,7 +15,7 @@ class TopMenuView(TemplateView):
 # TopMenu階層
 class SpiritOriginView(TemplateView):
 
-    template_name = "fgo_master_app/card-data.html"
+    template_name = "fgo_master_app/spirit-origin.html"
 
 
 class SynthesisSchemeView(TemplateView):
