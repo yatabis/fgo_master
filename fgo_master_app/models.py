@@ -121,13 +121,13 @@ class Servant(models.Model):
     # 宝具
     noble_phantasm = models.ManyToManyField('NoblePhantasm', related_name="servant")
     # 保有スキル
-    active_skill1 = models.ManyToManyField('ActiveSkill', related_name="servant")
-    active_skill2 = models.ManyToManyField('ActiveSkill', related_name="servant")
-    active_skill3 = models.ManyToManyField('ActiveSkill', related_name="servant")
+    active_skill1 = models.ManyToManyField('ActiveSkill', related_name="servant_for_skill1")
+    active_skill2 = models.ManyToManyField('ActiveSkill', related_name="servant_for_skill2")
+    active_skill3 = models.ManyToManyField('ActiveSkill', related_name="servant_for_skill3")
     # クラススキル
-    passive_skill1 = models.ManyToManyField('PassiveSkill', related_name="servant")
-    passive_skill2 = models.ManyToManyField('PassiveSkill', related_name="servant")
-    passive_skill3 = models.ManyToManyField('PassiveSkill', related_name="servant")
+    passive_skill1 = models.ManyToManyField('PassiveSkill', related_name="servant_for_skill1")
+    passive_skill2 = models.ManyToManyField('PassiveSkill', related_name="servant_for_skill2")
+    passive_skill3 = models.ManyToManyField('PassiveSkill', related_name="servant_for_skill3")
     # コマンドカード
     command_cards_distribution = models.CharField(max_length=8, choices=CC_DISTRIBUTION, default=QUICK1)
     quick_hits = models.IntegerField(default=1)
