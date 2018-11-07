@@ -125,9 +125,7 @@ class Servant(models.Model):
     active_skill2 = models.ManyToManyField('ActiveSkill', related_name="servant_for_skill2")
     active_skill3 = models.ManyToManyField('ActiveSkill', related_name="servant_for_skill3")
     # クラススキル
-    passive_skill1 = models.ManyToManyField('PassiveSkill', related_name="servant_for_skill1")
-    passive_skill2 = models.ManyToManyField('PassiveSkill', related_name="servant_for_skill2")
-    passive_skill3 = models.ManyToManyField('PassiveSkill', related_name="servant_for_skill3")
+    passive_skill = models.ManyToManyField('PassiveSkill', related_name="servant")
     # コマンドカード
     command_cards_distribution = models.CharField(max_length=8, choices=CC_DISTRIBUTION, default=QUICK1)
     quick_hits = models.IntegerField(default=1)
@@ -265,7 +263,7 @@ class NoblePhantasmEffect(models.Model):
     )
 
     # 種類
-    target = models.CharField(choices=TARGET_SET, max_length=8, default=ALL_ENEMIES)
+    target = models.CharField(choices=TARGET_SET, max_length=16, default=ALL_ENEMIES)
     # 効果
     text = models.TextField(default="")
     # ヒット数
