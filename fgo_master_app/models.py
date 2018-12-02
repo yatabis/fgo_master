@@ -291,9 +291,65 @@ class NoblePhantasmEffect(models.Model):
 class ActiveSkill(models.Model):
 
     # アイコンのセット
-    icon_file = "./static/fgo_master_app/images/icon/active_skill"
-    icon_list = os.listdir(icon_file)
-    ICON_SET = tuple((os.path.splitext(il)[0], il) for il in icon_list)
+    ICON_SET = (
+        ("ATK_UP", "ATKアップ"),
+        ("ATK_DOWN", "ATKダウン"),
+        ("Buster_UP", "バスターアップ"),
+        ("Arts_UP", "アーツアップ"),
+        ("Quick_UP", "クイックアップ"),
+        ("Critical_UP", "クリティカルアップ"),
+        ("Critical_DOWN", "クリティカルダウン"),
+        ("SpecialAttack_UP", "特攻アップ"),
+        ("NPStrength_UP", "宝具威力アップ"),
+        ("NPStrength_DOWN", "宝具威力ダウン"),
+        ("Hits_UP", "ヒット数増加"),
+        ("DEF_UP", "防御アップ"),
+        ("DEF_DOWN", "防御ダウン"),
+        ("Invincible", "無敵"),
+        ("InvincibleIgnore", "無敵貫通"),
+        ("Evade", "回避"),
+        ("SureHit", "必中"),
+        ("Guts", "ガッツ"),
+        ("Charm", "魅了"),
+        ("TargetFocus", "タゲ集中"),
+        ("DebuffResist_UP", "弱体耐性アップ"),
+        ("DebuffResist_DOWN", "弱体耐性ダウン"),
+        ("DebuffRemove", "弱体解除"),
+        ("DebuffImmune", "弱体無効"),
+        ("BuffImmune", "強化無効"),
+        ("HP_UP", "HP回復"),
+        ("HP_et", "HP回復状態"),
+        ("Healing_UP", "HP回復量アップ"),
+        ("MaxHP_UP", "最大HPアップ"),
+        ("NP_UP", "NP獲得"),
+        ("NP_et", "NP獲得状態"),
+        ("NPGain_UP", "NP獲得量アップ"),
+        ("Star_UP", "スター獲得"),
+        ("Star_et", "スター獲得状態"),
+        ("StarDrop_UP", "スター発生率アップ"),
+        ("StarGather_UP", "スター集中度アップ"),
+        ("StarGather_DOWN", "スター集中度ダウン"),
+        ("NPChargeIncrease", "宝具チャージ増加"),
+        ("ChargeDecrease", "チャージ減少"),
+        ("Poison", "毒"),
+        ("DebuffSuccess_UP", "弱体付与成功率アップ"),
+        ("DeathSuccess_UP", "即死成功率アップ"),
+        ("DeathResist_DOWN", "即死耐性ダウン"),
+        ("Stun", "スタン"),
+        ("Seal", "封印"),
+        ("AD_UP", "攻防アップ"),
+        ("AQB_UP", "AQBアップ"),
+        ("AB_UP", "ABアップ"),
+        ("QB_UP", "QBアップ"),
+        ("Turn", "ターン"),
+        ("BeautifulAppearance", "麗しの風貌"),
+        ("MysticEyes", "直死の魔眼"),
+        ("YinYang", "陰陽魚"),
+        ("KurNuGiA", "冥界の護り"),
+        ("Iseidako", "異星蛸"),
+        ("", "平穏の無花果"),
+        ("", "無貌の月"),
+    )
 
     # 名前
     name = models.CharField(max_length=64)
@@ -334,9 +390,23 @@ class ActiveSkillEffect(models.Model):
 class PassiveSkill(models.Model):
 
     # アイコンのセット
-    icon_file = "./static/fgo_master_app/images/icon/passive_skill"
-    icon_list = os.listdir(icon_file)
-    ICON_SET = tuple((os.path.splitext(il)[0], il) for il in icon_list)
+    ICON_SET = (
+        ("RidingSkill", "騎乗"),
+        ("TerritoryCreation", "陣地作成"),
+        ("MadnessEnhancement", "狂化"),
+        ("IndependentAction", "単独行動"),
+        ("PresenceConcealment", "気配遮断"),
+        ("ItemConstruction", "道具作成"),
+        ("Divinity", "神性"),
+        ("MagicResistance", "対魔力"),
+        ("CoreoftheGoddess", "女神の神核"),
+        ("Avenger", "復讐者"),
+        ("OblivionCorrection", "忘却補正"),
+        ("SelfRestoration", "自己回復"),
+        ("境界にて", "境界にて"),
+        ("領域外の生命", "領域外の生命"),
+        ("NoEffect", "効果なし"),
+    )
 
     # 名前
     name = models.CharField(max_length=64)
