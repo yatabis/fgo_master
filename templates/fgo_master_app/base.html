@@ -19,16 +19,19 @@
   <meta name="author" content="yatabis">
   <title>{% block title %}{% endblock %}</title>
   <meta name="description" content="Fate/Grand Order (FGO) のデータベースです。サーヴァントや概念礼装などの情報を確認したり、強化素材の管理やダメージ計算などができるツールです。">
-  <meta name="keywords" content="fgo, サーヴァント, 概念礼装, コマンドコード, 魔術礼装">
+  <meta name="keywords" content="fgo, servant, 概念礼装, コマンドコード, 魔術礼装">
   <meta name="description" content="{% block description %}{% endblock %}">
   <link rel="stylesheet" href="{% static 'fgo_master_app/css/normalize.css' %}">
   <link rel="stylesheet" href="{% static 'fgo_master_app/css/normalize.min.css' %}">
   <link rel="stylesheet" href="{% sass_src 'fgo_master_app/scss/main.scss' %}">
+  <script src="{% static 'fgo_master_app/js/main.js' %}"></script>
 </head>
 
 <body>
 <header>
-  <a href="{% url "top-menu" %}"><span class="sub-header">FGO</span><br><span class="main-header">カルデアデータベース</span></a>
+  <div onclick="openURL('{% url 'top-menu' %}')">
+    <span class="sub-header">FGO</span><br><span class="main-header">カルデアデータベース</span>
+  </div>
 </header>
 <main>
 

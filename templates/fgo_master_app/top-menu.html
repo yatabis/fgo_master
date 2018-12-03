@@ -6,33 +6,33 @@
 
 {% block main %}
 
-  <div class="content-wrapper">
+  <div class="content-wrapper" onclick="openURL('{% url 'spirit-origin' %}')">
     <div class="content-icon">
       icon
     </div>
-    <a class="content-main-name" href="{% url 'spirit-origin' %}">
+    <div class="content-main-name">
       霊基一覧
-    </a>
+    </div>
     <div class="content-sub-name">
-      Card Data
+      Spirit Origin
     </div>
   </div>
-  <div class="content-wrapper">
+  <div class="content-wrapper" onclick="openURL('{% url 'synthesis-scheme' %}')">
     <div class="content-icon">
       icon
     </div>
-    <a class="content-main-name" href="{% url 'synthesis-scheme' %}">
+    <div class="content-main-name">
       強化計画
-    </a>
+    </div>
     <div class="content-sub-name">
       Synthesis Scheme
     </div>
   </div>
-  <div class="content-wrapper">
+  <div class="content-wrapper" onclick="openURL('{% url 'battle-simulator' %}')">
     <div class="content-icon">
       icon
     </div>
-    <a class="content-main-name" href="{% url 'battle-simulator' %}">
+    <a class="content-main-name">
       模擬戦闘
     </a>
     <div class="content-sub-name">

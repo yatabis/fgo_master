@@ -3,14 +3,13 @@
     height: 15vh;
     background-color: #f88;
     text-align: center; }
-    header a {
-      display: block;
+    header div {
       width: 100%;
       height: 100%; }
-      header a .sub-header {
-        font-size: 4.5vh; }
-      header a .main-header {
-        font-size: 6vh; }
+    header .sub-header {
+      font-size: 4.5vh; }
+    header .main-header {
+      font-size: 6vh; }
 
   main {
     min-height: 80vh;
@@ -40,15 +39,19 @@
       margin-top: 0.2;
       font-size: 5.6vh;
       background-color: #fee;
-      text-align: center; }
-    main .servant_list {
-      font-size: 3.92vh; }
+      text-align: center;
+      white-space: nowrap; }
+      main .content-main-name span {
+        border: none;
+        padding: 0;
+        overflow: hidden; }
     main .content-sub-name {
       height: 2vh;
       font-size: 1.4vh;
       background-color: #00c;
       color: #fff;
-      text-align: center; }
+      text-align: center;
+      white-space: nowrap; }
     main .detail-wrapper {
       position: relative;
       margin: 10px;

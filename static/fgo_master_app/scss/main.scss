@@ -19,18 +19,17 @@ $background_down: #ffb;
     background-color: #f88;
     text-align: center;
 
-    a {
-      display: block;
+    div {
       width: 100%;
       height: 100%;
+    }
 
-      .sub-header {
-        font-size: $header-height * 0.3;
-      }
+    .sub-header {
+      font-size: $header-height * 0.3;
+    }
 
-      .main-header {
-        font-size: $header-height * 0.4;
-      }
+    .main-header {
+      font-size: $header-height * 0.4;
     }
   }
 
@@ -75,10 +74,13 @@ $background_down: #ffb;
       font-size: $content-height * $main-name-ratio * $name-text-ratio;
       background-color: #fee;
       text-align: center;
-    }
+      white-space: nowrap;
 
-    .servant_list {
-      font-size: $content-height * $main-name-ratio * $name-text-ratio * 0.7;
+      span {
+        border: none;
+        padding: 0;
+        overflow: hidden;
+      }
     }
 
     .content-sub-name {
@@ -87,6 +89,7 @@ $background_down: #ffb;
       background-color: #00c;
       color: #fff;
       text-align: center;
+      white-space: nowrap;
     }
 
     .detail-wrapper {

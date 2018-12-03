@@ -6,46 +6,46 @@
 
 {% block main %}
 
-  <div class="content-wrapper">
+  <div class="content-wrapper" onclick="openURL('{% url 'servant' %}')">
     <div class="content-icon">
       icon
     </div>
-    <a class="content-main-name" href="{% url 'servant' %}">
+    <div class="content-main-name">
       サーヴァント
-    </a>
+    </div>
     <div class="content-sub-name">
       Servant
     </div>
   </div>
-  <div class="content-wrapper">
+  <div class="content-wrapper" onclick="openURL('{% url 'craft-essence' %}')">
     <div class="content-icon">
       icon
     </div>
-    <a class="content-main-name" href="{% url 'craft-essence' %}">
+    <div class="content-main-name">
       概念礼装
-    </a>
+    </div>
     <div class="content-sub-name">
       Craft Essence
     </div>
   </div>
-  <div class="content-wrapper">
+  <div class="content-wrapper" onclick="openURL('{% url 'command-code' %}')">
     <div class="content-icon">
       icon
     </div>
-    <a class="content-main-name" href="{% url 'command-code' %}">
+    <div class="content-main-name">
       コマンドコード
-    </a>
+    </div>
     <div class="content-sub-name">
       Command Code
     </div>
   </div>
-  <div class="content-wrapper">
+  <div class="content-wrapper" onclick="openURL('{% url 'mystic-code' %}')">
     <div class="content-icon">
       icon
     </div>
-    <a class="content-main-name" href="{% url 'mystic-code' %}">
+    <div class="content-main-name">
       魔術礼装
-    </a>
+    </div>
     <div class="content-sub-name">
       Mystic Code
     </div>

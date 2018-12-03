@@ -7,13 +7,13 @@
 {% block main %}
 
   {% for servant in servants_list %}
-    <div class="content-wrapper">
+    <div class="content-wrapper" onclick="openURL('{% url "servant-detail" servant.name_en|slugify servant.No %}')">
       <div class="content-icon">
         icon
       </div>
-      <a class="content-main-name servant_list" href="{% url "servant-detail" servant.name_en|slugify servant.No %}">
+      <div class="content-main-name">
         {{ servant.name }}
-      </a>
+      </div>
       <div class="content-sub-name">
         {{ servant.class_name }}
       </div>
