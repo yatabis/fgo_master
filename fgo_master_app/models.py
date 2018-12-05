@@ -7,96 +7,63 @@ import os
 class Servant(models.Model):
 
     # クラスのセット
-    SHIELDER = "Shielder"
-    SABER = "Saber"
-    ARCHER = "Archer"
-    LANCER = "Lancer"
-    RIDER = "Rider"
-    CASTER = "Caster"
-    ASSASSIN = "Assassin"
-    BERSERKER = "Berserker"
-    RULER = "Ruler"
-    AVENGER = "Avenger"
-    MOON_CANCER = "MoonCancer"
-    ALTEREGO = "Alterego"
-    FOREIGNER = "Foreigner"
     CLASS_SET = (
-        (SHIELDER, "シールダー"),
-        (SABER, "セイバー"),
-        (ARCHER, "アーチャー"),
-        (LANCER, "ランサー"),
-        (RIDER, "ライダー"),
-        (CASTER, "キャスター"),
-        (ASSASSIN, "アサシン"),
-        (BERSERKER, "バーサーカー"),
-        (RULER, "ルーラー"),
-        (AVENGER, "アベンジャー"),
-        (MOON_CANCER, "ムーンキャンサー"),
-        (ALTEREGO, "アルターエゴ"),
-        (FOREIGNER, "フォーリナー"),
+        ("Shilder", "シールダー"),
+        ("Saber", "セイバー"),
+        ("Archer", "アーチャー"),
+        ("Lancer", "ランサー"),
+        ("Rider", "ライダー"),
+        ("Caster", "キャスター"),
+        ("Assassin", "アサシン"),
+        ("Berserker", "バーサーカー"),
+        ("Ruler", "ルーラー"),
+        ("Avenger", "アベンジャー"),
+        ("MoonCancer", "ムーンキャンサー"),
+        ("Alterego", "アルターエゴ"),
+        ("Foreigner", "フォーリナー"),
     )
 
     # 相性のセット
-    SKY = "Sky"
-    EARTH = "Earth"
-    MAN = "Man"
-    STAR = "Star"
-    BEAST = "Beast"
-    SYNASTRY_SET = (
-        (SKY, "天"),
-        (EARTH, "地"),
-        (MAN, "人"),
-        (STAR, "星"),
-        (BEAST, "獣"),
+    ATTRIBUTE_SET = (
+        ("Sky", "天"),
+        ("Earth", "地"),
+        ("Man", "人"),
+        ("Star", "星"),
+        ("Beast", "獣"),
     )
 
     # 方針のセット
-    LAWFUL = "Lawful"
-    CHAOTIC = "Chaotic"
-    NEUTRAL = "Neutral"
-    OTHER = "Other"
     POLICY_SET = (
-        (LAWFUL, "秩序"),
-        (CHAOTIC, "混沌"),
-        (NEUTRAL, "中立"),
-        (OTHER, "その他"),
+        ("Lawful", "秩序"),
+        ("Chaotic", "混沌"),
+        ("Neutral", "中立"),
+        ("Other", "その他"),
     )
 
     # 性格のセット
-    GOOD = "Good"
-    EViL = "Evil"
-    MADNESS = "Madness"
     CHARACTER_SET = (
-        (GOOD, "善"),
-        (EViL, "悪"),
-        (NEUTRAL, "中庸"),
-        (MADNESS, "狂"),
-        (OTHER, "その他"),
+        ("Good", "善"),
+        ("Evil", "悪"),
+        ("Neutral", "中庸"),
+        ("Madness", "狂"),
+        ("Other", "その他"),
     )
 
     # 性別のセット
-    MALE = "Male"
-    FEMALE = "Female"
     GENDER_SET = (
-        (MALE, "男性"),
-        (FEMALE, "女性"),
-        (OTHER, "その他"),
+        ("Male", "男性"),
+        ("Female", "女性"),
+        ("Other", "その他"),
     )
 
     # コマンドカード配分のセット
-    QUICK3 = "Quick3"
-    ARTS3 = "Arts3"
-    BUSTER3 = "Buster3"
-    QUICK1 = "Quick1"
-    ARTS1 = "Arts1"
-    BUSTER1 = "Buster1"
     CC_DISTRIBUTION = (
-        (QUICK3, "QQQAB"),
-        (ARTS3, "QAAAB"),
-        (BUSTER3, "QABBB"),
-        (QUICK1, "QAABB"),
-        (ARTS1, "QQABB"),
-        (BUSTER1, "QQAAB"),
+        ("Quick3", "QQQAB"),
+        ("Arts3", "QAAAB"),
+        ("Buster3", "QABBB"),
+        ("Quick1", "QAABB"),
+        ("Arts1", "QQABB"),
+        ("Buster1", "QQAAB"),
     )
 
     # 番号
@@ -105,19 +72,19 @@ class Servant(models.Model):
     name = models.CharField(max_length=64)
     name_en = models.CharField(max_length=64)
     # クラス
-    class_name = models.CharField(choices=CLASS_SET, default=SABER, max_length=16)
+    class_name = models.CharField(choices=CLASS_SET, default=CLASS_SET[1][0], max_length=16)
     # レアリティ
     rarity = models.IntegerField()
     # コスト
     cost = models.IntegerField()
     # 相性
-    attribute = models.CharField(choices=SYNASTRY_SET, max_length=8, default=MAN)
+    attribute = models.CharField(choices=ATTRIBUTE_SET, max_length=8, default=ATTRIBUTE_SET[2][0])
     # 方針
-    alignment1 = models.CharField(choices=POLICY_SET, max_length=8, default=LAWFUL)
+    alignment1 = models.CharField(choices=POLICY_SET, max_length=8, default=POLICY_SET[0][0])
     # 性格
-    alignment2 = models.CharField(choices=CHARACTER_SET, max_length=8, default=GOOD)
+    alignment2 = models.CharField(choices=CHARACTER_SET, max_length=8, default=CHARACTER_SET[0][0])
     # 性別
-    gender = models.CharField(choices=GENDER_SET, max_length=8, default=FEMALE)
+    gender = models.CharField(choices=GENDER_SET, max_length=8, default=GENDER_SET[1][0])
     # 宝具
     noble_phantasm = models.ManyToManyField('NoblePhantasm', related_name="servant")
     # 保有スキル
@@ -127,7 +94,7 @@ class Servant(models.Model):
     # クラススキル
     passive_skill = models.ManyToManyField('PassiveSkill', related_name="servant")
     # コマンドカード
-    command_cards_distribution = models.CharField(max_length=8, choices=CC_DISTRIBUTION, default=QUICK1)
+    command_cards_distribution = models.CharField(max_length=8, choices=CC_DISTRIBUTION, default=CC_DISTRIBUTION[3][0])
     quick_hits = models.IntegerField(default=1)
     arts_hits = models.IntegerField(default=1)
     buster_hits = models.IntegerField(default=1)
@@ -411,16 +378,107 @@ class PassiveSkill(models.Model):
     # 名前
     name = models.CharField(max_length=64)
     # アイコン
-    icon = models.CharField(choices=ICON_SET, max_length=64, blank=True, default="")
+    icon = models.CharField(choices=ICON_SET, max_length=64, default=ICON_SET[0][0])
     # ランク
-    rank = models.CharField(max_length=4, blank=True, default="")
+    rank = models.CharField(max_length=8, default="A")
     # 効果
-    text = models.TextField(default="")
-    # 数値
-    value = models.FloatField(blank=True, null=True)
+    effect = models.ManyToManyField('PassiveSkillEffect', related_name="passive_skill")
 
     def __repr__(self):
         return f"{self.name} {self.rank}"
+
+    def __str__(self):
+        return self.__repr__()
+
+
+class PassiveSkillEffect(models.Model):
+
+    # 効果のセット
+    EFFECT_SET = (
+        ("Quick", "Quickカードの性能"),
+        ("Arts", "Artsカードの性能"),
+        ("Buster", "Busterカードの性能"),
+        ("Critical", "クリティカル威力"),
+        ("StarDrop", "スター発生率"),
+        ("DebuffSuccess", "弱体付与成功率"),
+        ("DamagePlus", "与ダメージプラス状態"),
+        ("DebuffResist", "弱体耐性"),
+        ("DeathResist", "即死耐性"),
+        ("MentalDebuffResist", "精神異常耐性"),
+        ("NPDamaged", "被ダメージ時に獲得するNP"),
+        ("NP_et", "毎ターンNP獲得状態"),
+        ("DeathImmune", "即死無効状態"),
+        ("PowerfulCharmResist", "強力な魅了耐性"),
+        ("DeathEffect", "通常攻撃時に極低確率で即死効果が発生する状態"),
+        ("DEF", "防御力"),
+        ("SpecialAttack", "特攻状態"),
+        ("Healing", "HP回復量"),
+        ("Star_et", "毎ターンスター2個獲得状態"),
+        ("BurnImmune", "やけど無効状態"),
+    )
+
+    # 対象のセット
+    TARGET_SET = (
+        ("yourself", "自身"),
+        ("all_in_sub_ex_you", "自信を除く味方全体<控え含む>"),
+    )
+
+    # 程度のセット
+    TEXT_SET = (
+        ("apply", "付与"),
+        ("increase", "アップ"),
+        ("slightly_increase", "少しアップ"),
+        ("decrease", "ダウン"),
+    )
+
+    # 制限の種類
+    LIMIT_SET = (
+        ("attribute", "特性"),
+        ("class", "クラス"),
+        ("field", "フィールド"),
+        ("None", "なし")
+    )
+
+    # 特性のセット
+    ATTR_SET = (
+        ("Humanoid", "人型"),
+        ("None", "なし")
+    )
+
+    # クラスのセット
+    CLASS_SET = Servant.CLASS_SET + (("None", "なし"),)
+
+    # フィールドのセット
+    FIELD_SET = (
+        ("WaterSide", "水辺"),
+        ("None", "なし")
+    )
+
+    # 効果
+    effect = models.CharField(max_length=32, choices=EFFECT_SET, default=EFFECT_SET[0][0])
+    # 対象
+    target = models.CharField(max_length=32, choices=TARGET_SET, default=TARGET_SET[0][0])
+    # 制限
+    limit_type = models.CharField(max_length=16, choices=LIMIT_SET, default=LIMIT_SET[-1][0])
+    attr_limit = models.CharField(max_length=16, choices=ATTR_SET, default=ATTR_SET[-1][0])
+    class_limit = models.CharField(max_length=16, choices=CLASS_SET, default=CLASS_SET[-1][0])
+    field_limit = models.CharField(max_length=16, choices=FIELD_SET, default=FIELD_SET[-1][0])
+    # 程度
+    text = models.CharField(max_length=32, choices=TEXT_SET, default=TEXT_SET[1][0])
+    # 値
+    value = models.FloatField(blank=True, null=True)
+
+    def __repr__(self):
+        ret = ""
+        if self.limit_type == "field":
+            ret += f"〔{self.field_limit}〕のあるフィールドにおいてのみ、"
+        ret += self.target
+        ret += "に" if self.text == "apply" else "の"
+        ret += self.effect
+        ret += "を"
+        ret += self.text
+        ret += f"({self.value})"
+        return ret
 
     def __str__(self):
         return self.__repr__()
