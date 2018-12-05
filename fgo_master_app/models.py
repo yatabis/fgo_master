@@ -384,6 +384,24 @@ class PassiveSkill(models.Model):
     # 効果
     effect = models.ManyToManyField('PassiveSkillEffect', related_name="passive_skill")
 
+    def display_text(self):
+        text = ""
+        prev = None
+        for i, effect in enumerate(self.effect.all()):
+            if i == 0:
+                text += effect.get_target_display()
+                text += "に" if effect.text == "apply" else "の"
+                text += effect.display_text()
+            else:
+                if effect.target == prev:
+                    text += "＆"
+                else:
+                    text += effect.get_target_display()
+                    text += "に" if effect.text == "apply" else "の"
+                text += effect.display_text()
+            prev = effect.target
+        return text
+
     def __repr__(self):
         return f"{self.name} {self.rank}"
 
@@ -431,14 +449,6 @@ class PassiveSkillEffect(models.Model):
         ("decrease", "ダウン"),
     )
 
-    # 制限の種類
-    LIMIT_SET = (
-        ("attribute", "特性"),
-        ("class", "クラス"),
-        ("field", "フィールド"),
-        ("None", "なし")
-    )
-
     # 特性のセット
     ATTR_SET = (
         ("Humanoid", "人型"),
@@ -455,28 +465,43 @@ class PassiveSkillEffect(models.Model):
     )
 
     # 効果
-    effect = models.CharField(max_length=32, choices=EFFECT_SET, default=EFFECT_SET[0][0])
+    effect = models.CharField(max_length=32, choices=EFFECT_SET, default=EFFECT_SET[0][0], verbose_name="効果")
     # 対象
-    target = models.CharField(max_length=32, choices=TARGET_SET, default=TARGET_SET[0][0])
+    target = models.CharField(max_length=32, choices=TARGET_SET, default=TARGET_SET[0][0], verbose_name="対象")
     # 制限
-    limit_type = models.CharField(max_length=16, choices=LIMIT_SET, default=LIMIT_SET[-1][0])
-    attr_limit = models.CharField(max_length=16, choices=ATTR_SET, default=ATTR_SET[-1][0])
-    class_limit = models.CharField(max_length=16, choices=CLASS_SET, default=CLASS_SET[-1][0])
-    field_limit = models.CharField(max_length=16, choices=FIELD_SET, default=FIELD_SET[-1][0])
+    attr_limit = models.CharField(max_length=16, choices=ATTR_SET, default=ATTR_SET[-1][0], verbose_name="特性制限")
+    class_limit = models.CharField(max_length=16, choices=CLASS_SET, default=CLASS_SET[-1][0], verbose_name="クラス制限")
+    field_limit = models.CharField(max_length=16, choices=FIELD_SET, default=FIELD_SET[-1][0], verbose_name="フィールド制限")
     # 程度
-    text = models.CharField(max_length=32, choices=TEXT_SET, default=TEXT_SET[1][0])
+    text = models.CharField(max_length=32, choices=TEXT_SET, default=TEXT_SET[1][0], verbose_name="程度")
     # 値
-    value = models.FloatField(blank=True, null=True)
+    value = models.FloatField(blank=True, null=True, verbose_name="値")
+
+    def display_text(self):
+        text = ""
+        if not self.field_limit == "None":
+            text += f"〔{self.get_field_limit_display()}〕のあるフィールドにおいてのみ、{self.get_target_display()}"
+            text += "に" if self.text == "apply" else "の"
+        if not self.attr_limit == "None":
+            text += f"〔{self.get_attr_limit_display()}〕"
+        if not self.class_limit == "None":
+            text += f"〔{self.get_class_limit_display()}〕クラス"
+        if not self.attr_limit == "None" or not self.class_limit == "None":
+            if self.effect == "DEF":
+                text += "の敵からの攻撃に対する"
+            if self.effect == "SpeciallAttack":
+                text += "への"
+        text += self.get_effect_display()
+        text += "を"
+        text += self.get_text_display()
+        return text
 
     def __repr__(self):
         ret = ""
-        if self.limit_type == "field":
-            ret += f"〔{self.field_limit}〕のあるフィールドにおいてのみ、"
-        ret += self.target
-        ret += "に" if self.text == "apply" else "の"
-        ret += self.effect
-        ret += "を"
-        ret += self.text
+        if not self.field_limit == "None":
+            ret += self.get_target_display()
+            ret += "に" if self.text == "apply" else "の"
+        ret += self.display_text()
         ret += f"({self.value})"
         return ret
 

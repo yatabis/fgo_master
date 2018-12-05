@@ -80,7 +80,7 @@
         <tr>
           <td>SKILL 1</td>
           <td rowspan="2">
-            <img src="{% static "fgo_master_app/images/icon/active_skill" %}/{{ servant.active_skill1.last.get_icon_display }}"
+            <img src="{% static "fgo_master_app/images/icon/active_skill" %}/{{ servant.active_skill1.last.icon }}.png"
                  style="width: 10vw"></td>
           <td>{{ servant.active_skill1.last.name }} {{ servant.active_skill1.last.rank }}</td>
         </tr>
@@ -95,7 +95,7 @@
         <tr>
           <td>SKILL 2</td>
           <td rowspan="2">
-            <img src="{% static "fgo_master_app/images/icon/active_skill" %}/{{ servant.active_skill2.last.get_icon_display }}"
+            <img src="{% static "fgo_master_app/images/icon/active_skill" %}/{{ servant.active_skill2.last.icon }}.png"
                  style="width: 10vw"></td>
           <td>{{ servant.active_skill2.last.name }} {{ servant.active_skill2.last.rank }}</td>
         </tr>
@@ -110,7 +110,7 @@
         <tr>
           <td>SKILL 3</td>
           <td rowspan="2">
-            <img src="{% static "fgo_master_app/images/icon/active_skill" %}/{{ servant.active_skill3.last.get_icon_display }}"
+            <img src="{% static "fgo_master_app/images/icon/active_skill" %}/{{ servant.active_skill3.last.icon }}.png"
                  style="width: 10vw"></td>
           <td>{{ servant.active_skill3.last.name }} {{ servant.active_skill3.last.rank }}</td>
         </tr>
@@ -134,16 +134,12 @@
           <tr>
             <td rowspan="2">SKILL {{ forloop.counter }}</td>
             <td rowspan="2">
-              <img src="{% static "fgo_master_app/images/icon/passive_skill" %}/{{ skill.get_icon_display }}"
+              <img src="{% static "fgo_master_app/images/icon/passive_skill" %}/{{ skill.icon }}.png"
                    style="width: 10vw"></td>
             <td>{{ skill.name }} {{ skill.rank }}</td>
           </tr>
           <tr>
-            <td>
-              {% for effect in skill.effect.all %}
-                {{ effect.text }}
-              {% endfor %}
-            </td>
+            <td>{{ skill.display_text }}</td>
           </tr>
         {% endfor %}
       </table>
