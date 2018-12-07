@@ -498,7 +498,7 @@ class PassiveSkillEffect(models.Model):
 
     def __repr__(self):
         ret = ""
-        if not self.field_limit == "None":
+        if self.field_limit == "None":
             ret += self.get_target_display()
             ret += "に" if self.text == "apply" else "の"
         ret += self.display_text()
