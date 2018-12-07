@@ -376,13 +376,13 @@ class PassiveSkill(models.Model):
     )
 
     # 名前
-    name = models.CharField(max_length=64)
+    name = models.CharField(max_length=64, verbose_name="クラススキル名")
     # アイコン
-    icon = models.CharField(choices=ICON_SET, max_length=64, default=ICON_SET[0][0])
+    icon = models.CharField(choices=ICON_SET, max_length=64, default=ICON_SET[0][0], verbose_name="アイコン")
     # ランク
-    rank = models.CharField(max_length=8, default="A")
+    rank = models.CharField(max_length=8, default="A", verbose_name="ランク")
     # 効果
-    effect = models.ManyToManyField('PassiveSkillEffect', related_name="passive_skill")
+    effect = models.ManyToManyField('PassiveSkillEffect', related_name="passive_skill", verbose_name="効果")
 
     def display_text(self):
         text = ""
@@ -502,7 +502,7 @@ class PassiveSkillEffect(models.Model):
             ret += self.get_target_display()
             ret += "に" if self.text == "apply" else "の"
         ret += self.display_text()
-        if not self.value == "None":
+        if self.value:
             ret += f"({abs(self.value)})"
         return ret
 
