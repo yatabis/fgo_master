@@ -489,7 +489,7 @@ class PassiveSkillEffect(models.Model):
         if not self.attr_limit == "None" or not self.class_limit == "None":
             if self.effect == "DEF":
                 text += "の敵からの攻撃に対する"
-            if self.effect == "SpeciallAttack":
+            if self.effect == "SpecialAttack":
                 text += "への"
         text += self.get_effect_display()
         text += "を"
@@ -502,7 +502,8 @@ class PassiveSkillEffect(models.Model):
             ret += self.get_target_display()
             ret += "に" if self.text == "apply" else "の"
         ret += self.display_text()
-        ret += f"({self.value})"
+        if not self.value == "None":
+            ret += f"({abs(self.value)})"
         return ret
 
     def __str__(self):
