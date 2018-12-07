@@ -372,7 +372,15 @@ class PassiveSkill(models.Model):
         ("SelfRestoration", "自己回復"),
         ("境界にて", "境界にて"),
         ("領域外の生命", "領域外の生命"),
-        ("NoEffect", "効果なし"),
+        ("Buster_UP", "バスターアップ"),
+        ("Arts_UP", "アーツアップ"),
+        ("Critical_UP", "クリティカルアップ"),
+        ("SpecialAttack_UP", "特攻アップ"),
+        ("DEF_UP", "防御アップ"),
+        ("DebuffResist_UP", "弱体耐性アップ"),
+        ("NP_et", "NP獲得状態"),
+        ("StarDrop_UP", "スター発生率アップ"),
+        ("NoEffect", "効果なし")
     )
 
     # 名前
