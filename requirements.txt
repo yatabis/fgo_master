@@ -8,7 +8,7 @@ gunicorn==19.9.0
 Jinja2==2.10
 libsass==0.15.1
 pep8==1.7.1
-Pillow==5.0.0
+Pillow==8.2.0
 psycopg2==2.7.5
 pyflakes==1.6.0
 pytz==2017.3
